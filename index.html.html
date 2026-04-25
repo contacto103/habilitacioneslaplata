@@ -1,0 +1,3075 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Habilitaciones La Plata · By Gestor La Plata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<style>
+:root{
+  --navy:#1D3557; --verde-dark:#145E38; --verde:#1A7A4A; --verde-medio:#229459;
+  --verde-acento:#2EAD6B; --mint:#E8F5EE; --fondo:#F1F3F5; --texto:#212529;
+  --muted:#6c757d; --wa:#25D366; --white:#fff;
+  --border:rgba(29,53,87,0.10); --border-strong:rgba(29,53,87,0.18);
+  --shadow-sm:0 2px 8px rgba(26,122,74,.06);
+  --shadow-md:0 6px 20px rgba(26,122,74,.08);
+  --shadow-lg:0 12px 40px rgba(26,122,74,.10);
+  --radius:12px; --radius-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:'Inter',system-ui,sans-serif;background:var(--fondo);color:var(--texto);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{display:flex;min-height:100vh}
+h1,h2,h3,h4,h5,h6,.font-display{font-family:'Poppins',sans-serif;color:var(--navy);letter-spacing:-0.01em}
+a{color:var(--verde);text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:inherit;font-size:14px}
+
+.sidebar{width:260px;background:linear-gradient(180deg,var(--navy) 0%,#152741 100%);color:var(--white);padding:24px 18px;display:flex;flex-direction:column;gap:8px;position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0}
+.brand{padding:8px 12px 22px 12px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:14px}
+.brand h1{font-size:21px;font-weight:800;color:var(--white);line-height:1.1;margin-bottom:2px}
+.brand .sub{font-size:11.5px;color:var(--verde-acento);font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-family:'Poppins'}
+.nav-section{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);padding:14px 12px 4px;font-weight:600}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:rgba(255,255,255,.82);font-size:14px;font-weight:500;transition:all .15s}
+.nav a:hover{background:rgba(255,255,255,.06);color:var(--white)}
+.nav a.active{background:var(--verde);color:var(--white);box-shadow:0 4px 12px rgba(26,122,74,.4)}
+.nav a .ico{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
+.sidebar-foot{margin-top:auto;padding:14px 12px;font-size:11px;color:rgba(255,255,255,.4);border-top:1px solid rgba(255,255,255,.08)}
+
+.main{flex:1;min-width:0;padding:34px 44px 80px;max-width:1280px}
+.page-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:28px;border-bottom:1px solid var(--border);padding-bottom:20px}
+.page-head h1{font-size:32px;font-weight:800;line-height:1.1}
+.page-head .sub{color:var(--muted);font-size:14px;margin-top:6px}
+.page-head .actions{display:flex;gap:10px;flex-wrap:wrap}
+
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:8px;font-size:13.5px;font-weight:600;font-family:'Poppins';text-transform:uppercase;letter-spacing:.04em;transition:all .15s;border:none;cursor:pointer;white-space:nowrap}
+.btn-primary{background:var(--verde);color:var(--white);box-shadow:0 4px 14px rgba(26,122,74,.3)}
+.btn-primary:hover{background:var(--verde-dark);transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,122,74,.4)}
+.btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--border-strong)}
+.btn-ghost:hover{background:var(--mint);border-color:var(--verde);color:var(--verde)}
+.btn-danger{background:transparent;color:#b03030;border:1.5px solid rgba(176,48,48,.3)}
+.btn-danger:hover{background:#fff0f0;border-color:#b03030}
+.btn-sm{padding:6px 12px;font-size:11.5px}
+.btn-icon{padding:8px;border-radius:7px;background:transparent;color:var(--muted);transition:all .15s;font-size:15px}
+.btn-icon:hover{background:var(--mint);color:var(--verde)}
+
+.card{background:var(--white);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-sm);border:1px solid var(--border);transition:all .15s}
+.card.featured{border-top:4px solid var(--verde)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.metric{padding:18px 20px}
+.metric .label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:6px}
+.metric .value{font-family:'Poppins';font-size:28px;font-weight:800;color:var(--navy);line-height:1}
+.metric .delta{font-size:12px;color:var(--verde);margin-top:4px;font-weight:500}
+
+.tbl-wrap{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border)}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{background:var(--mint);text-align:left;padding:12px 16px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde);font-weight:700;font-family:'Poppins';border-bottom:1px solid var(--border)}
+.tbl td{padding:14px 16px;border-bottom:1px solid var(--border);font-size:14px;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover{background:rgba(232,245,238,.4)}
+.tbl .cell-strong{font-weight:600;color:var(--navy)}
+.tbl .cell-muted{color:var(--muted);font-size:13px}
+.tbl .row-actions{display:flex;gap:4px;justify-content:flex-end}
+
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-family:'Poppins'}
+.badge-verde{background:rgba(26,122,74,.12);color:var(--verde)}
+.badge-amber{background:#fef3c7;color:#92400e}
+.badge-red{background:#fee2e2;color:#991b1b}
+.badge-gris{background:#e5e7eb;color:#374151}
+.badge-info{background:rgba(29,53,87,.1);color:var(--navy)}
+.badge-acento{background:rgba(244,162,97,.18);color:#b06022}
+
+.estado{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-family:'Poppins'}
+.e-pre_encuadre{background:#e0e7ff;color:#3730a3}
+.e-en_carga{background:#fef3c7;color:#92400e}
+.e-listo_presentar{background:rgba(26,122,74,.15);color:var(--verde)}
+.e-presentado{background:rgba(46,173,107,.18);color:var(--verde-medio)}
+.e-en_observacion{background:#fee2e2;color:#991b1b}
+.e-aprobado{background:rgba(26,122,74,.2);color:var(--verde-dark);box-shadow:0 0 0 2px rgba(26,122,74,.08)}
+.e-rechazado{background:#fecaca;color:#7f1d1d}
+.e-cierre{background:#cbd5e1;color:#334155}
+.e-archivado{background:#e5e7eb;color:#6b7280}
+
+.form-group{margin-bottom:18px}
+.form-label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--navy);margin-bottom:6px;font-family:'Poppins'}
+.form-input,.form-select,.form-textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border-strong);border-radius:8px;background:var(--white);color:var(--texto);transition:all .15s;font-size:14px}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px rgba(26,122,74,.12)}
+.form-textarea{resize:vertical;min-height:80px;font-family:inherit}
+.form-help{font-size:12px;color:var(--muted);margin-top:5px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-check{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1.5px solid var(--border-strong);border-radius:8px;cursor:pointer;transition:all .15s;margin-bottom:8px}
+.form-check:hover{background:var(--mint);border-color:var(--verde)}
+.form-check input[type=checkbox],.form-check input[type=radio]{margin-top:2px;width:18px;height:18px;accent-color:var(--verde);flex-shrink:0}
+.form-check .label-text{font-size:14px;font-weight:500;color:var(--texto)}
+.form-check .label-help{font-size:12px;color:var(--muted);margin-top:2px}
+.form-check.checked{background:var(--mint);border-color:var(--verde)}
+
+.wizard{max-width:780px;margin:0 auto}
+.stepper{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding:0 8px}
+.step{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;position:relative}
+.step:not(:last-child)::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:2px;background:var(--border);z-index:0}
+.step.done:not(:last-child)::after{background:var(--verde)}
+.step .num{position:relative;z-index:1;width:30px;height:30px;border-radius:50%;background:var(--fondo);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--muted);font-family:'Poppins'}
+.step.active .num{background:var(--verde);border-color:var(--verde);color:var(--white);box-shadow:0 0 0 4px rgba(26,122,74,.18)}
+.step.done .num{background:var(--verde);border-color:var(--verde);color:var(--white)}
+.step .lbl{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;text-align:center}
+.step.active .lbl,.step.done .lbl{color:var(--navy)}
+.wiz-step-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow-md);border:1px solid var(--border);border-top:4px solid var(--verde)}
+.wiz-step-card h2{font-size:24px;margin-bottom:6px}
+.wiz-step-card .step-sub{color:var(--muted);font-size:14px;margin-bottom:24px}
+.wiz-nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+
+.tabs{display:flex;gap:2px;border-bottom:1.5px solid var(--border);margin-bottom:24px;overflow-x:auto}
+.tab{padding:12px 20px;font-size:13.5px;font-weight:600;color:var(--muted);font-family:'Poppins';text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid transparent;margin-bottom:-1.5px;cursor:pointer;transition:all .15s;white-space:nowrap}
+.tab:hover{color:var(--navy)}
+.tab.active{color:var(--verde);border-bottom-color:var(--verde)}
+
+.checklist-group{margin-bottom:28px}
+.checklist-group h3{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);font-weight:700}
+.check-item{padding:12px 14px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;background:var(--white);transition:all .15s}
+.check-item.done{background:rgba(232,245,238,.5);border-color:rgba(26,122,74,.25)}
+.check-item .head{display:flex;gap:12px;align-items:flex-start}
+.check-item input[type=checkbox]{margin-top:3px;width:18px;height:18px;accent-color:var(--verde);flex-shrink:0}
+.check-item .body{flex:1;min-width:0}
+.check-item .label{font-size:14px;font-weight:500;color:var(--navy);line-height:1.4}
+.check-item.done .label{color:var(--muted);text-decoration:line-through}
+.check-item .help{font-size:12px;color:var(--muted);margin-top:3px}
+.check-item .opcional{display:inline-block;font-size:9.5px;padding:1px 6px;background:#f0f0f0;color:var(--muted);border-radius:3px;margin-left:6px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;vertical-align:middle}
+.check-item .expand-btn{background:transparent;color:var(--muted);font-size:12px;padding:2px 4px;cursor:pointer}
+.check-item .extras{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);display:none;grid-template-columns:1fr 1fr 2fr;gap:10px}
+.check-item.expanded .extras{display:grid}
+.check-item .extras label{font-size:10px;text-transform:uppercase;font-weight:600;color:var(--muted);letter-spacing:.04em}
+.check-item .extras input,.check-item .extras textarea{padding:6px 9px;font-size:13px;border:1px solid var(--border-strong);border-radius:6px;width:100%;font-family:inherit}
+
+.progress{height:8px;background:var(--mint);border-radius:99px;overflow:hidden;margin:6px 0}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--verde) 0%,var(--verde-acento) 100%);transition:width .4s}
+.progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:12px}
+.progress-row .pct{font-weight:700;color:var(--verde);font-family:'Poppins'}
+
+.rubro-card{padding:16px 20px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all .15s;display:flex;justify-content:space-between;align-items:center;border-left:4px solid var(--verde)}
+.rubro-card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px);background:var(--mint)}
+.rubro-card .rubro-info{flex:1;min-width:0}
+.rubro-card .rubro-nombre{font-weight:600;font-size:15px;color:var(--navy);margin-bottom:3px}
+.rubro-card .rubro-meta{font-size:12px;color:var(--muted)}
+.rubro-card .arrow{color:var(--verde);font-size:18px;flex-shrink:0;margin-left:12px;transition:transform .2s}
+.rubro-card.open .arrow{transform:rotate(90deg)}
+.rubro-detail{padding:20px;background:var(--mint);border-radius:0 0 var(--radius) var(--radius);margin-top:-12px;margin-bottom:14px;border:1px solid var(--border);border-top:none;display:none}
+.rubro-detail.show{display:block}
+.rubro-detail .grupo-block{margin-bottom:16px}
+.rubro-detail .grupo-block h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde);margin-bottom:6px;font-weight:700}
+.rubro-detail ul{list-style:none;padding-left:0}
+.rubro-detail li{padding:5px 0;font-size:13.5px;color:var(--texto);position:relative;padding-left:18px}
+.rubro-detail li::before{content:'✓';position:absolute;left:0;color:var(--verde);font-weight:700}
+.rubro-detail li.opt::before{content:'○';color:var(--muted)}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:var(--white);padding:14px 22px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25);font-size:13.5px;font-weight:500;z-index:9999;opacity:0;transform:translateY(8px);transition:all .25s;font-family:'Poppins'}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.ok{background:var(--verde)}
+.toast.error{background:#b91c1c}
+
+.portal-wrap{max-width:760px;margin:40px auto;padding:0 20px}
+.portal-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--verde-dark) 100%);color:var(--white);padding:42px 36px;border-radius:var(--radius);margin-bottom:24px;box-shadow:var(--shadow-lg)}
+.portal-hero h1{color:var(--white);font-size:30px;margin-bottom:8px}
+.portal-hero .sub{color:var(--verde-acento);font-weight:500;font-size:14px;letter-spacing:.04em;text-transform:uppercase;font-family:'Poppins';margin-bottom:14px}
+.portal-hero .desc{color:rgba(255,255,255,.85);font-size:15px;max-width:540px}
+
+.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty .icon{font-size:48px;opacity:.4;margin-bottom:16px}
+.empty h3{color:var(--navy);font-size:18px;margin-bottom:8px}
+.empty p{font-size:14px;margin-bottom:20px}
+
+.modal-bg{position:fixed;inset:0;background:rgba(29,53,87,.5);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px}
+.modal-bg.show{display:flex}
+.modal{background:var(--white);border-radius:var(--radius);max-width:480px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.3);border-top:4px solid var(--verde)}
+.modal h3{font-size:20px;margin-bottom:8px}
+.modal p{color:var(--muted);font-size:14px;margin-bottom:18px}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
+
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--mint);color:var(--verde);border-radius:99px;font-size:11.5px;font-weight:600;font-family:'Poppins'}
+
+@media (max-width:880px){
+  body{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:relative;flex-direction:row;gap:6px;overflow-x:auto;padding:14px}
+  .brand,.nav-section,.sidebar-foot{display:none}
+  .nav{display:flex;flex-direction:row;gap:4px}
+  .nav a{padding:8px 12px;font-size:12px;white-space:nowrap}
+  .main{padding:20px 18px 60px}
+  .page-head{flex-direction:column;align-items:flex-start;gap:12px}
+  .page-head h1{font-size:24px}
+  .form-row{grid-template-columns:1fr}
+}
+
+.row{display:flex;gap:14px;align-items:center}
+.row.wrap{flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:14px}
+.gap-sm{gap:6px}
+.gap-md{gap:14px}
+.mt-md{margin-top:14px}
+.mt-lg{margin-top:24px}
+.mb-md{margin-bottom:14px}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+.text-right{text-align:right}
+.hidden{display:none!important}
+.font-mono{font-family:'JetBrains Mono','Courier New',monospace;font-size:12.5px}
+.code-pill{display:inline-block;padding:2px 7px;background:var(--mint);color:var(--verde);border-radius:5px;font-size:12px;font-weight:600;font-family:'JetBrains Mono','Courier New',monospace}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="brand">
+    <h1>Habilitaciones La&nbsp;Plata</h1>
+    <div class="sub">By Gestor La Plata</div>
+  </div>
+  <div class="nav-section">Trabajo diario</div>
+  <nav class="nav" id="nav">
+    <a href="#/" data-route=""><span class="ico">📊</span>Dashboard</a>
+    <a href="#/expedientes" data-route="expedientes"><span class="ico">📁</span>Expedientes</a>
+    <a href="#/historicos" data-route="historicos"><span class="ico">🗄️</span>Archivos Históricos</a>
+    <a href="#/clientes" data-route="clientes"><span class="ico">👥</span>Clientes</a>
+    <a href="#/vencimientos" data-route="vencimientos"><span class="ico">⏰</span>Vencimientos</a>
+  </nav>
+  <div class="nav-section">Referencia</div>
+  <nav class="nav">
+    <a href="#/catalogo" data-route="catalogo"><span class="ico">📚</span>Catálogo de rubros</a>
+    <a href="#/ordenanzas" data-route="ordenanzas"><span class="ico">📜</span>Ordenanzas</a>
+    <a href="#/backup" data-route="backup"><span class="ico">💾</span>Backup / Restore</a>
+  </nav>
+  <div class="sidebar-foot">v2.0 · datos locales · localStorage</div>
+</aside>
+
+<main class="main" id="main"></main>
+
+<div id="modal" class="modal-bg" onclick="cerrarModal(event)">
+  <div class="modal" id="modalBody" onclick="event.stopPropagation()"></div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+const ESTADOS = {
+  PRE_ENCUADRE:    {label:'Pre-encuadre',         clase:'e-pre_encuadre'},
+  EN_CARGA:        {label:'En carga',             clase:'e-en_carga'},
+  LISTO_PRESENTAR: {label:'Listo para presentar', clase:'e-listo_presentar'},
+  PRESENTADO:      {label:'Presentado',           clase:'e-presentado'},
+  EN_OBSERVACION:  {label:'En observación',       clase:'e-en_observacion'},
+  APROBADO:        {label:'Aprobado',             clase:'e-aprobado'},
+  RECHAZADO:       {label:'Rechazado',            clase:'e-rechazado'},
+  CIERRE:          {label:'Cerrado',              clase:'e-cierre'},
+  ARCHIVADO:       {label:'Archivado',            clase:'e-archivado'},
+};
+
+const TIPOS_TRAMITE = {
+  HABILITACION_NUEVA: 'Habilitación nueva',
+  MODIFICACION:       'Modificación de habilitación',
+  TRANSFERENCIA:      'Transferencia de habilitación',
+  CIERRE:             'Cierre / baja',
+  REBA_INSCRIPCION:   'ReBA — Inscripción',
+  REBA_RENOVACION:    'ReBA — Renovación',
+};
+
+const GRUPOS = {
+  generales:       '1 · Requisitos generales (todos los comercios)',
+  personeria:      '1 · Personería jurídica',
+  inmueble:        '1 · Inmueble · planos · derecho de uso',
+  antisiniestral:  '1 · Informe de seguridad antisiniestral',
+  modificacion:    '1 · Modificación / Transferencia',
+  servicios:       '1 · Servicios (gas / agua caliente)',
+  especiales:      '2 · Actividad especial · documentación complementaria',
+  ord_10799_grl:   '3 · Ord. 10.799 — Generales (permanencia público)',
+  ord_10799_cat:   '3 · Ord. 10.799 — Categoría específica',
+  ord_10799_rad:   '3 · Ord. 10.799 — Radiales 200m',
+  bomberos:        '4 · Bomberos (obligatorio si aplica Ord. 10.799)',
+  reba:            'ReBA · Inscripción / Renovación',
+  regularizacion:  'Plan Regularización · Res. 137/2025',
+};
+
+/* ═══════════════════════════════════════════════════════════
+   1 · REQUISITOS GENERALES (TODOS los comercios sin excepción)
+   Fuente: PDF "Requisitos generales (para todos los comercios)"
+   ═══════════════════════════════════════════════════════════ */
+const REQ_BASE = [
+  {codigo:'ddjj',          grupo:'generales',  label:'Declaración Jurada (DDJJ)', obligatorio:true},
+  {codigo:'afip',          grupo:'generales',  label:'Constancia de Inscripción de AFIP', obligatorio:true},
+  {codigo:'dni',           grupo:'generales',  label:'Copia DNI del titular (frente y dorso)', obligatorio:true},
+  {codigo:'poder',         grupo:'generales',  label:'Poder · Autorización de representación + DNI del autorizado', obligatorio:false, help:'Si lo realiza un tercero (gestor, apoderado, familiar)'},
+  {codigo:'libre_deuda_522',grupo:'generales', label:'Formulario libre deuda previsional 522-A (AFIP)', obligatorio:true},
+  {codigo:'iibb_arba',     grupo:'generales',  label:'Certificado de domicilio de Ingresos Brutos (ARBA)', obligatorio:true},
+  {codigo:'dam',           grupo:'generales',  label:'Certificado de Deudores Alimentarios Morosos (DAM)', obligatorio:true},
+  {codigo:'foto_frente',   grupo:'inmueble',   label:'Foto del frente del comercio', obligatorio:true},
+  {codigo:'derecho_uso',   grupo:'inmueble',   label:'Constancia de derecho de uso del inmueble (firmas certificadas)', obligatorio:true, help:'Escritura · Contrato de alquiler · Comodato · Boleto compra-venta 10 años de vigencia'},
+  {codigo:'plano_obra',    grupo:'inmueble',   label:'Plano de Obra Civil autenticado y actualizado', obligatorio:true},
+  /* Antisiniestral base — CERPROSA */
+  {codigo:'cerprosa',      grupo:'antisiniestral', label:'Informe de Cerprosa (con copia de plano asesorada) · o Mantenimiento de Cerprosa', obligatorio:true, vence:true},
+  /* Personería jurídica */
+  {codigo:'estatuto',      grupo:'personeria',  label:'Estatuto / Contrato Constitutivo', obligatorio:true, solo_si:'persona_juridica'},
+  {codigo:'acta_design',   grupo:'personeria',  label:'Acta de designación de autoridades', obligatorio:true, solo_si:'persona_juridica'},
+  {codigo:'ultima_acta',   grupo:'personeria',  label:'Última Acta de Asamblea', obligatorio:true, solo_si:'persona_juridica'},
+  /* Modificación / Transferencia */
+  {codigo:'hab_anterior',  grupo:'modificacion', label:'Certificado de Habilitación Anterior', obligatorio:true, solo_si:'es_modificacion or es_transferencia', help:'Si no lo posee: Denuncia de Extravío del Registro de las Personas. Presentar Libro de Actas Anterior al retirar el Certificado.'},
+  {codigo:'transferencia_rpc', grupo:'modificacion', label:'Transferencia · Disposición o boleto de compraventa (Registro Público de Comercio)', obligatorio:true, solo_si:'es_transferencia'},
+  /* Servicios — en caso de requerir */
+  {codigo:'cert_gas',      grupo:'servicios',  label:'Aptitud de instalación de gas (matriculado)', obligatorio:true, solo_si:'tiene_gas', vence:true},
+  {codigo:'cert_agua',     grupo:'servicios',  label:'Constancia de provisión de agua caliente (factura + foto del termotanque)', obligatorio:true, solo_si:'tiene_agua_caliente'},
+];
+
+/* ═══════════════════════════════════════════════════════════
+   3 · ORDENANZA 10.799 — Permanencia de público
+   Fuente: PDF "REQUISITOS - ORDENANZA 10.799"
+   ═══════════════════════════════════════════════════════════ */
+const REQ_10799 = [
+  /* CATEGORÍA I a V — TODAS las que tienen permanencia público */
+  {codigo:'rc_10799',          grupo:'ord_10799_grl', label:'Seguros de Responsabilidad Civil', obligatorio:true, solo_si:'permanencia_publico', vence:true},
+  {codigo:'botiquin_10799',    grupo:'ord_10799_grl', label:'Botiquín de primeros auxilios', obligatorio:true, solo_si:'permanencia_publico'},
+  {codigo:'emerg_med_10799',   grupo:'ord_10799_grl', label:'Emergencias Médicas (contratación + último pago)', obligatorio:true, solo_si:'permanencia_publico', vence:true},
+  {codigo:'limp_tanques',      grupo:'ord_10799_grl', label:'Constancia de limpieza de tanques de agua', obligatorio:true, solo_si:'permanencia_publico', vence:true},
+  {codigo:'desratizacion',     grupo:'ord_10799_grl', label:'Constancia de desratización', obligatorio:true, solo_si:'permanencia_publico', vence:true},
+  {codigo:'imp_sonoro',        grupo:'ord_10799_grl', label:'Estudio del impacto sonoro (con calibración del equipo)', obligatorio:true, solo_si:'permanencia_publico'},
+  {codigo:'gas_f35',           grupo:'ord_10799_grl', label:'Instalación de gas: Cert. gasista matriculado F3-5 o informe de instalación de artefactos', obligatorio:true, solo_si:'permanencia_publico'},
+  {codigo:'residuos_esp_10799',grupo:'ord_10799_grl', label:'Retiro de residuos especiales', obligatorio:true, solo_si:'permanencia_publico'},
+  {codigo:'co2_10799',         grupo:'ord_10799_grl', label:'Constancia mantenimiento de tubos CO2 (empresa proveedora o prueba de tubo)', obligatorio:true, solo_si:'permanencia_publico'},
+  {codigo:'cartel_capacidad',  grupo:'ord_10799_grl', label:'Cartel indicador de capacidad — "La Plata Ciudad de Iguales" (Factor de Ocupación)', obligatorio:true, solo_si:'permanencia_publico'},
+  /* Antisiniestral 10799 — Bomberos integrado en su sección */
+  {codigo:'mesas_croquis',     grupo:'ord_10799_grl', label:'Solicitud uso vía pública (Ord. 5795) — Croquis con distribución y cantidad de mesas/sillas', obligatorio:true, solo_si:'permanencia_publico and tiene_mesas_via_publica'},
+  /* CATEGORÍA I y III específicos */
+  {codigo:'camaras_seg',       grupo:'ord_10799_cat', label:'Cámaras de seguridad', obligatorio:true, solo_si:'categoria_10799 in (I,III)'},
+  {codigo:'control_concurr',   grupo:'ord_10799_cat', label:'Control de concurrencia / Detector de metales', obligatorio:true, solo_si:'categoria_10799 in (I,III)'},
+  {codigo:'control_admision',  grupo:'ord_10799_cat', label:'Personal de control de admisión y permanencia', obligatorio:true, solo_si:'categoria_10799 in (I,III)'},
+  {codigo:'imp_sonoro_ext',    grupo:'ord_10799_cat', label:'Estudio del impacto sonoro EXTERIOR', obligatorio:true, solo_si:'categoria_10799 in (I,III)'},
+  /* RADIALES 200m a la redonda — categorías I, II, III y V */
+  {codigo:'rad_salud',         grupo:'ord_10799_rad', label:'Radial 200m — Centros de salud con internación y/o emergencias', obligatorio:true, solo_si:'categoria_10799 in (I,II,III,V)'},
+  {codigo:'rad_ancianos',      grupo:'ord_10799_rad', label:'Radial 200m — Residencias de ancianos', obligatorio:true, solo_si:'categoria_10799 in (I,II,III,V)'},
+  {codigo:'rad_velatorios',    grupo:'ord_10799_rad', label:'Radial 200m — Salones velatorios', obligatorio:true, solo_si:'categoria_10799 in (I,II,III,V)'},
+  {codigo:'rad_educativos',    grupo:'ord_10799_rad', label:'Radial 200m — Establecimientos educativos', obligatorio:true, solo_si:'categoria_10799 in (I,III,V)', help:'Categoría II (Salones de Eventos) NO compite con este ítem (Ord. 11898)'},
+  /* FACTIBILIDAD DE LOCALIZACIÓN — > 300m² o manifestaciones artísticas */
+  {codigo:'factibilidad',      grupo:'ord_10799_grl', label:'Factibilidad de localización', obligatorio:true, solo_si:'permanencia_publico and superficie_grande', help:'Requerido si supera 300 m² o realiza manifestaciones artísticas'},
+];
+
+const REQ_BOMBEROS = [
+  {codigo:'plano_bomberos',    grupo:'bomberos', label:'Plano de obra hoja entera 1:100 aprobado por Obras Particulares', help:'No pegado ni unido con cinta. Triplicado.', obligatorio:true, solo_si:'permanencia_publico'},
+  {codigo:'dni_bomberos',      grupo:'bomberos', label:'Fotocopia DNI del titular de la habilitación', obligatorio:true, solo_si:'permanencia_publico'},
+  {codigo:'autoriz_tercero',   grupo:'bomberos', label:'Autorización del titular + DNI del autorizado (gestor / familiar)', obligatorio:false, solo_si:'permanencia_publico'},
+  {codigo:'estatuto_bomb',     grupo:'bomberos', label:'Estatuto + composición del directorio', obligatorio:true, solo_si:'permanencia_publico and persona_juridica'},
+  {codigo:'contrato_bomb',     grupo:'bomberos', label:'Contrato locación / comodato / escritura legalizado', obligatorio:true, solo_si:'permanencia_publico'},
+  {codigo:'timbrado_bomb',     grupo:'bomberos', label:'Timbrado fiscal pagado (Asesoramiento Prevención Incendios)', help:'Portal GBA: valor según superficie cubierta', obligatorio:true, solo_si:'permanencia_publico'},
+  {codigo:'carpetas_bomb',     grupo:'bomberos', label:'1 carpeta de tres solapas + 1 carpeta legajera', obligatorio:true, solo_si:'permanencia_publico'},
+  {codigo:'capacit_extint',    grupo:'bomberos', label:'Capacitación uso extintores (Final de obra) — H&S matriculado', obligatorio:true, solo_si:'permanencia_publico', vence:true},
+  {codigo:'plan_evac_hys',     grupo:'bomberos', label:'Plan y plano de evacuación firmado H&S matriculado', obligatorio:true, solo_si:'permanencia_publico'},
+  {codigo:'cert_elect_bomb',   grupo:'bomberos', label:'Certificado de aptitud eléctrica visado por Colegio de Técnicos', obligatorio:true, solo_si:'permanencia_publico', vence:true},
+  {codigo:'tarjetas_dps',      grupo:'bomberos', label:'Fotocopia tarjetas DPS vigentes de extintores manuales', obligatorio:true, solo_si:'permanencia_publico', vence:true},
+];
+
+const REQ_REBA = [
+  {codigo:'dni_reba',          grupo:'reba', label:'DNI del titular (copia)', obligatorio:true, solo_si:'es_reba'},
+  {codigo:'hab_comerc_reba',   grupo:'reba', label:'Habilitación comercial vigente (copia)', obligatorio:true, solo_si:'es_reba'},
+  {codigo:'iibb_reba',         grupo:'reba', label:'Constancia inscripción IIBB (o monotributo con Reg. Simp.)', obligatorio:true, solo_si:'es_reba_inscripcion'},
+  {codigo:'ddjj_iibb_reba',    grupo:'reba', label:'DDJJ anual de IIBB (R-006W)', obligatorio:true, solo_si:'es_reba_renovacion'},
+  {codigo:'licencia_reba',     grupo:'reba', label:'Licencia ReBA a renovar', obligatorio:true, solo_si:'es_reba_renovacion'},
+  {codigo:'estatuto_reba',     grupo:'reba', label:'Estatuto social', obligatorio:true, solo_si:'es_reba and persona_juridica'},
+  {codigo:'acta_reba',         grupo:'reba', label:'Última acta de asamblea con designación de autoridades', obligatorio:false, solo_si:'es_reba and persona_juridica'},
+];
+
+const REQ_REG137 = [
+  {codigo:'plano_anterior',    grupo:'regularizacion', label:'Plano obra civil aprobado anterior (Permiso, Según Obra o Final)', obligatorio:true, solo_si:'planos_desactualizados'},
+  {codigo:'plano_actualizado', grupo:'regularizacion', label:'Plano actualizado rubricado por profesional idóneo', help:'Refleja la realidad edilicia actual del inmueble', obligatorio:true, solo_si:'planos_desactualizados'},
+  {codigo:'compromiso_emp',    grupo:'regularizacion', label:'Nota compromiso de empadronar modificaciones posteriormente', obligatorio:true, solo_si:'planos_desactualizados'},
+  {codigo:'inspeccion_137',    grupo:'regularizacion', label:'Constancia de inspección previa (Art. 6° Res. 137/2025)', obligatorio:true, solo_si:'planos_desactualizados'},
+];
+
+/* ═══════════════════════════════════════════════════════════
+   2 · ACTIVIDADES COMERCIALES CON DOCUMENTACIÓN ESPECÍFICA
+   Fuente: PDF "Requisitos actividades especiales"
+   Cada actividad SUMA a los Requisitos Generales (REQ_BASE).
+   ═══════════════════════════════════════════════════════════ */
+const ACT_ESPECIALES = {
+  tatuajes: {
+    label:'Tatuajes / Piercing',
+    ord:'9.066',
+    items:[
+      {codigo:'tat_bioseg',  label:'Certificado de curso de bioseguridad', obligatorio:true},
+      {codigo:'tat_residuos', label:'Constancia de retiro de residuos especiales', obligatorio:true},
+      {codigo:'tat_botiquin', label:'Botiquín de primeros auxilios (boleta de compra o foto)', obligatorio:true},
+    ]
+  },
+  fotocopiado: { label:'Servicios de fotocopiado / Imprenta', items:[
+    {codigo:'foto_residuos', label:'Constancia de retiro de residuos', obligatorio:true},
+  ]},
+  locutorio: { label:'Locutorios / Cyber', items:[
+    {codigo:'loc_contrato',   label:'Contrato con empresa proveedora', obligatorio:true},
+    {codigo:'loc_filtro',     label:'Filtro de pornografía para menores (Cyber)', obligatorio:true},
+  ]},
+  cobro_pago: { label:'Servicios de Cobro (Pago Fácil / Rapi Pago)', items:[
+    {codigo:'cobro_contrato', label:'Contrato con empresa proveedora', obligatorio:true},
+  ]},
+  lavadero_ropa: { label:'Lavadero de Ropa', items:[
+    {codigo:'lav_absa',       label:'Boletos ABSA con detalle de prestación "Comercial"', obligatorio:true},
+  ]},
+  inmobiliaria_act: { label:'Inmobiliaria', items:[
+    {codigo:'inm_matricula',  label:'Matrícula del Martillero', obligatorio:true},
+  ]},
+  cerveza: { label:'Despacho de Cerveza', items:[
+    {codigo:'cerv_co2',       label:'Constancia de mantenimiento de tubos de CO2', obligatorio:true, vence:true},
+  ]},
+  instr_med: { label:'Venta de Instrumental Médico / Odontológico', items:[
+    {codigo:'med_ms',         label:'Autorización del Ministerio de Salud', obligatorio:true},
+    {codigo:'med_anmat',      label:'Certificado de ANMAT (buenas prácticas + autorización del proveedor)', obligatorio:false, help:'En caso de no poseer Autorización Min. de Salud'},
+    {codigo:'med_vinculo',    label:'Constancia de vínculo con el proveedor', obligatorio:false},
+    {codigo:'med_aut_prov',   label:'Constancia de Autorización de Salud del proveedor', obligatorio:false},
+  ]},
+  farmacia: { label:'Farmacias / Droguerías', items:[
+    {codigo:'far_ms',         label:'Autorización del Ministerio de Salud', obligatorio:true},
+    {codigo:'far_matricula',  label:'Certificado de matrícula del profesional a cargo', obligatorio:true, vence:true},
+    {codigo:'far_patogenos',  label:'Retiro de residuos patógenos', obligatorio:true},
+    {codigo:'far_toldo',      label:'Foto de toldo o alero (en caso de realizar guardias)', obligatorio:false},
+  ]},
+  agencia_seg: { label:'Agencia de Seguridad', items:[
+    {codigo:'as_minseg',      label:'Autorización del Ministerio de Seguridad', obligatorio:true},
+  ]},
+  agencia_viajes: { label:'Agencia de Viajes', items:[
+    {codigo:'av_turismo',     label:'Autorización del Ministerio de Turismo', obligatorio:true},
+  ]},
+  prod_seguros: { label:'Productores de seguros / Aseguradoras', items:[
+    {codigo:'ps_super',       label:'Autorización de la Superintendencia de Seguros', obligatorio:true},
+    {codigo:'ps_matricula',   label:'Matrícula de productor', obligatorio:true},
+  ]},
+  loteria: { label:'Agencia de Lotería', items:[
+    {codigo:'lot_ipl',        label:'Autorización del Instituto Provincial de Lotería y Casinos', obligatorio:true},
+  ]},
+  esc_manejo: { label:'Escuela de Manejo', items:[
+    {codigo:'em_transporte',  label:'Autorización del Ministerio de Transporte', obligatorio:true},
+  ]},
+  banco_cambio: { label:'Banco Privado / Agencia de Cambio', items:[
+    {codigo:'bc_bcra',        label:'Autorización del Banco Central', obligatorio:true},
+  ]},
+  correo: { label:'Correo / Encomiendas', items:[
+    {codigo:'correo_enacom',  label:'Autorización de ENACOM', obligatorio:true},
+  ]},
+  veterinaria_act: { label:'Veterinaria', items:[
+    {codigo:'vet_colegio',    label:'Certificado del Colegio de Veterinarios', obligatorio:true},
+    {codigo:'vet_patogenos',  label:'Retiro de residuos patógenos', obligatorio:true},
+    {codigo:'vet_responsable',label:'Nota de responsable técnico + copia de DNI', obligatorio:true},
+  ]},
+  optica: { label:'Ópticas', items:[
+    {codigo:'op_colegio',     label:'Certificado del Colegio de Ópticos', obligatorio:true},
+  ]},
+  taller_gnc: { label:'Taller mecánico · Instalación de GNC', items:[
+    {codigo:'tm_residuos',    label:'Constancia de retiro de residuos especiales', obligatorio:true},
+    {codigo:'tm_presion',     label:'Uso de elementos sometidos a presión', obligatorio:true},
+    {codigo:'tm_elevador',    label:'Constancia de mantenimiento del elevador hidráulico (si posee)', obligatorio:false, vence:true},
+  ]},
+  pirotecnia: {
+    label:'Pirotecnia',
+    ord:'8282/94 · 12391',
+    items:[
+      {codigo:'pir_solicitud', label:'Solicitud de Venta de Pirotécnia (15/Nov al 6/Ene)', obligatorio:true},
+      {codigo:'pir_bomberos_bultos', label:'Informe de Bomberos con cantidad de bultos/cajas a la venta', obligatorio:true},
+    ]
+  },
+  hotel_pension: {
+    label:'Hoteles / Pensión',
+    ord:'11.028',
+    items:[
+      {codigo:'hot_emerg',      label:'Constancia de contratación de emergencias médicas + último pago', obligatorio:true, vence:true},
+      {codigo:'hot_rc',         label:'Constancia de contratación de seguro de responsabilidad civil + último pago', obligatorio:true, vence:true},
+      {codigo:'hot_camuzzi',    label:'Formulario 3.5 de Camuzzi', obligatorio:true},
+    ]
+  },
+  centro_medico: {
+    label:'Centro de atención médica · Gabinete de enfermería · Laboratorios',
+    items:[
+      {codigo:'cm_ms',          label:'Autorización del Ministerio de Salud (o constancia de inicio de trámite)', obligatorio:true},
+      {codigo:'cm_matricula',   label:'Cert. matrícula vigente del Colegio de Médicos (con datos del director técnico)', obligatorio:true, vence:true},
+      {codigo:'cm_responsable', label:'Nota de responsable técnico + copia del DNI', obligatorio:true},
+      {codigo:'cm_patogenos',   label:'Retiro de residuos patógenos', obligatorio:true},
+    ]
+  },
+  centro_estetica: {
+    label:'Centro de estética',
+    ord:'9.114',
+    items:[
+      {codigo:'ce_medico',      label:'Médico a cargo: nota de compromiso + cert. del Colegio de Médicos', obligatorio:true},
+      {codigo:'ce_ddjj',        label:'Declaración Jurada con actividades a realizar', obligatorio:true},
+    ]
+  },
+  clinica_disc: {
+    label:'Clínica · Centro para personas con discapacidad · Rehabilitación',
+    items:[
+      {codigo:'cd_ms',          label:'Autorización Ministerio de Salud (o inicio de trámite)', obligatorio:true},
+      {codigo:'cd_emerg',       label:'Constancia contratación emergencias médicas + último pago', obligatorio:true, vence:true},
+      {codigo:'cd_rc',          label:'Constancia contratación seguro RC + último pago', obligatorio:true, vence:true},
+      {codigo:'cd_telefono',    label:'Constancia servicio de teléfono fijo + último pago (o nota compromiso)', obligatorio:true},
+      {codigo:'cd_matricula',   label:'Cert. matrícula vigente del profesional a cargo', obligatorio:true, vence:true},
+    ]
+  },
+  solarium: {
+    label:'Solarium',
+    items:[
+      {codigo:'sol_ms',         label:'Autorización del Min. de Salud (máquinas y profesionales)', obligatorio:true},
+      {codigo:'sol_cartel',     label:'Cartel de prohibición a menores de 18 años + riesgos para la salud', obligatorio:true},
+      {codigo:'sol_medico',     label:'Médico a cargo: nota + cert. Colegio de Médicos (si Sec. Salud lo determina)', obligatorio:false},
+    ]
+  },
+  cancha_deportiva: {
+    label:'Cancha Fútbol / Paddle / Tennis / Squash / Voley / Básquet',
+    ord:'7356 · 11279',
+    items:[
+      {codigo:'can_rcp',        label:'Constancia de curso de RCP', obligatorio:true, vence:true},
+      {codigo:'can_emerg',      label:'Contratación emergencias médicas + último pago', obligatorio:true, vence:true},
+      {codigo:'can_rc',         label:'Seguro de responsabilidad civil (póliza + último pago)', obligatorio:true, vence:true},
+      {codigo:'can_columnas',   label:'Protección de seguridad en columnas (si existen)', obligatorio:false},
+    ]
+  },
+  gimnasio_act: {
+    label:'Gimnasio · Pilates · Yoga · Taichi · Artes Marciales · Danzas',
+    items:[
+      {codigo:'gim_titulo',     label:'Título profesional universitario a cargo (o certificación según disciplina)', obligatorio:true},
+      {codigo:'gim_responsable',label:'Nota de compromiso del responsable técnico + DNI', obligatorio:true},
+      {codigo:'gim_emerg',      label:'Contratación emergencias médicas + último pago', obligatorio:true, vence:true},
+      {codigo:'gim_rc',         label:'Seguro RC + último pago', obligatorio:true, vence:true},
+      {codigo:'gim_rcp',        label:'Constancia de curso de RCP', obligatorio:true, vence:true},
+    ]
+  },
+  natatorio: {
+    label:'Natatorio',
+    ord:'9.885',
+    items:[
+      {codigo:'nat_titulo',     label:'Título profesional universitario a cargo (Educación Física)', obligatorio:true},
+      {codigo:'nat_responsable',label:'Nota responsable técnico + copia DNI', obligatorio:true},
+      {codigo:'nat_emerg',      label:'Emergencias médicas + último pago', obligatorio:true, vence:true},
+      {codigo:'nat_rc',         label:'Seguro RC (póliza + último pago)', obligatorio:true, vence:true},
+      {codigo:'nat_rcp',        label:'Curso de RCP', obligatorio:true, vence:true},
+      {codigo:'nat_rescatador', label:'Rescatador cardiopulmonar (espejo agua < 50 m²) o Guardavidas (≥ 50 m²)', obligatorio:true, vence:true},
+      {codigo:'nat_consultorio',label:'Consultorio médico de revisión con días/horarios estipulados', obligatorio:true},
+      {codigo:'nat_medico',     label:'Médico a cargo: nota + cert. Colegio de Médicos', obligatorio:true},
+      {codigo:'nat_bacteriologico',label:'Análisis bacteriológico del agua', obligatorio:true, vence:true},
+    ]
+  },
+  colonia_vac: {
+    label:'Colonia de Vacaciones',
+    ord:'9.355',
+    items:[
+      {codigo:'col_titulo',     label:'Título de profesor universitario a cargo', obligatorio:true},
+      {codigo:'col_responsable',label:'Nota + DNI del responsable técnico', obligatorio:true},
+      {codigo:'col_emerg',      label:'Convenio de emergencias médicas', obligatorio:true, vence:true},
+      {codigo:'col_rc',         label:'Póliza de seguro de responsabilidad civil', obligatorio:true, vence:true},
+      {codigo:'col_bacteriologico',label:'Análisis bacteriológico del agua (si posee pileta)', obligatorio:false, vence:true},
+      {codigo:'col_cerco',      label:'Foto de cerco perimetral (si posee pileta)', obligatorio:false},
+    ]
+  },
+  estacion_servicio: {
+    label:'Estación de servicio (GNC y/o Líquidos)',
+    ord:'10.250 · 12.195',
+    items:[
+      {codigo:'es_camuzzi',     label:'Formulario 3.5 de Camuzzi (GNC)', obligatorio:true, solo_si_act:'es_gnc'},
+      {codigo:'es_hidraulica',  label:'Cert. prueba hidráulica de instrumentos a presión (GNC)', obligatorio:true, solo_si_act:'es_gnc'},
+      {codigo:'es_hermeticidad',label:'Prueba de hermeticidad de tanques y cañerías (Líquidos)', obligatorio:true, solo_si_act:'es_liquidos'},
+      {codigo:'es_secenergia',  label:'Registro de la estación en la Secretaría de Energía (Líquidos)', obligatorio:true, solo_si_act:'es_liquidos'},
+    ]
+  },
+  instituto_idiomas: {
+    label:'Instituto de Idiomas',
+    items:[
+      {codigo:'ii_titulo',      label:'Título profesional universitario a cargo', obligatorio:true},
+      {codigo:'ii_emerg',       label:'Emergencias médicas + último pago', obligatorio:true, vence:true},
+      {codigo:'ii_rc',          label:'Seguro RC + último pago', obligatorio:true, vence:true},
+    ]
+  },
+  cadi: {
+    label:'CADI · Centro de Atención y Desarrollo Infantil',
+    ord:'11.387',
+    items:[
+      {codigo:'cadi_rc',         label:'Seguro de Responsabilidad Civil', obligatorio:true, vence:true},
+      {codigo:'cadi_emerg',      label:'Servicio de Emergencias Médicas', obligatorio:true, vence:true},
+      {codigo:'cadi_libreta',    label:'Libreta sanitaria de manipulación de alimentos', obligatorio:true, vence:true},
+      {codigo:'cadi_primaux',    label:'Curso de primeros auxilios (bebés y niños)', obligatorio:true, vence:true},
+      {codigo:'cadi_titulo',     label:'Título habilitante para la actividad', obligatorio:true},
+      {codigo:'cadi_ddjj',       label:'Nota en carácter de declaración jurada', obligatorio:true},
+      {codigo:'cadi_dni_resp',   label:'DNI del responsable a cargo', obligatorio:true},
+      {codigo:'cadi_inspeccion', label:'Inspección de Comercio', obligatorio:true},
+      {codigo:'cadi_bomberos',   label:'Informe Antisiniestral de Bomberos (Asesoramiento + Final de Obra) + Factor Ocupación + Plan Evacuación', obligatorio:true},
+      {codigo:'cadi_desinfeccion', label:'Certificado de desinfección del inmueble', obligatorio:true, vence:true},
+    ]
+  },
+};
+
+
+/* RUBROS — cada uno declara:
+   - actividades: claves de ACT_ESPECIALES que aplican
+   - cat_sugerida: categoría 10799 sugerida (I=disco · II=salones eventos · III=bares c/man.art · IV=restaurantes s/man.art · V=pool/billar)
+   - sugiere_gas: si suele llevar gas
+*/
+const RUBROS = [
+  /* Comercios sin permanencia público */
+  {id:'almacen',       nombre:'Almacén / Despensa',           actividades:[]},
+  {id:'panaderia',     nombre:'Panadería',                    actividades:[],         sugiere_gas:true},
+  {id:'carniceria',    nombre:'Carnicería',                   actividades:[]},
+  {id:'verduleria',    nombre:'Verdulería / Frutería',        actividades:[]},
+  {id:'kiosco',        nombre:'Kiosco / Maxikiosco',          actividades:[]},
+  {id:'rotiseria',     nombre:'Rotisería / Casa de comidas',  actividades:[],         sugiere_gas:true},
+  {id:'heladeria',     nombre:'Heladería',                    actividades:[]},
+  {id:'consultorio',   nombre:'Consultorio profesional',      actividades:[]},
+  {id:'estudio',       nombre:'Estudio / Oficina',            actividades:[]},
+  {id:'pelu',          nombre:'Peluquería / Estética básica', actividades:[]},
+  {id:'gomeria',       nombre:'Gomería',                      actividades:[]},
+  {id:'ferreteria',    nombre:'Ferretería',                   actividades:[]},
+  {id:'indum',         nombre:'Indumentaria',                 actividades:[]},
+  {id:'electrodom',    nombre:'Electrodomésticos',            actividades:[]},
+  {id:'muebleria',     nombre:'Mueblería',                    actividades:[]},
+  {id:'florería',      nombre:'Florería',                     actividades:[]},
+  {id:'jugueteria',    nombre:'Juguetería',                   actividades:[]},
+  /* Con permanencia público (Ord. 10799 obligatoria) */
+  {id:'discoteca',     nombre:'Discoteca / Confitería bailable',        actividades:[],                 cat_sugerida:'I',  sugiere_perm:true},
+  {id:'salon_fiestas', nombre:'Salón de fiestas / eventos',             actividades:[],                 cat_sugerida:'II', sugiere_gas:true, sugiere_perm:true},
+  {id:'bar_concert',   nombre:'Bar · Café-concert · Resto-bar (CON manifestaciones artísticas)', actividades:[], cat_sugerida:'III', sugiere_gas:true, sugiere_perm:true, man_artisticas:true},
+  {id:'restaurante',   nombre:'Restaurante / Pub / Cafetería (SIN manifestaciones artísticas)', actividades:[], cat_sugerida:'IV', sugiere_gas:true, sugiere_perm:true},
+  {id:'pool_billar',   nombre:'Pool / Billar (complemento de comidas)', actividades:[],                 cat_sugerida:'V',  sugiere_perm:true},
+  {id:'pizzeria',      nombre:'Pizzería',                     actividades:[],                 cat_sugerida:'IV', sugiere_gas:true, sugiere_perm:true},
+  {id:'bar',           nombre:'Bar / Cafetería simple',       actividades:[],                 cat_sugerida:'IV', sugiere_gas:true, sugiere_perm:true},
+  /* Actividades especiales (con su array correspondiente) */
+  {id:'tatuajes',      nombre:'Estudio de Tatuajes / Piercing',         actividades:['tatuajes']},
+  {id:'fotocopias',    nombre:'Fotocopias / Imprenta',                  actividades:['fotocopiado']},
+  {id:'locutorio',     nombre:'Locutorio / Cyber',                      actividades:['locutorio']},
+  {id:'cobro_pago',    nombre:'Pago Fácil / Rapi Pago',                 actividades:['cobro_pago']},
+  {id:'lavadero',      nombre:'Lavadero de ropa',                       actividades:['lavadero_ropa']},
+  {id:'inmobiliaria',  nombre:'Inmobiliaria',                           actividades:['inmobiliaria_act']},
+  {id:'cerveceria',    nombre:'Despacho de cerveza artesanal',          actividades:['cerveza']},
+  {id:'instr_med',     nombre:'Venta instrumental médico / odontológico', actividades:['instr_med']},
+  {id:'farmacia',      nombre:'Farmacia / Droguería',                   actividades:['farmacia']},
+  {id:'agencia_seg',   nombre:'Agencia de seguridad',                   actividades:['agencia_seg']},
+  {id:'agencia_viajes',nombre:'Agencia de viajes',                      actividades:['agencia_viajes']},
+  {id:'prod_seguros',  nombre:'Productor de seguros / Aseguradora',     actividades:['prod_seguros']},
+  {id:'agencia_quin',  nombre:'Agencia de quiniela / Lotería',          actividades:['loteria']},
+  {id:'esc_manejo',    nombre:'Escuela de manejo',                      actividades:['esc_manejo']},
+  {id:'banco_cambio',  nombre:'Banco privado / Casa de cambio',         actividades:['banco_cambio']},
+  {id:'correo',        nombre:'Correo / Encomiendas',                   actividades:['correo']},
+  {id:'veterinaria',   nombre:'Veterinaria',                            actividades:['veterinaria_act']},
+  {id:'optica',        nombre:'Óptica',                                 actividades:['optica']},
+  {id:'taller_mec',    nombre:'Taller mecánico / Instalación GNC',      actividades:['taller_gnc']},
+  {id:'lubricentro',   nombre:'Lubricentro',                            actividades:['taller_gnc']},
+  {id:'pirotecnia',    nombre:'Venta de pirotecnia',                    actividades:['pirotecnia']},
+  {id:'hotel',         nombre:'Hotel / Pensión',                        actividades:['hotel_pension']},
+  {id:'centro_med',    nombre:'Centro de atención médica / Laboratorio', actividades:['centro_medico']},
+  {id:'centro_est',    nombre:'Centro de estética',                     actividades:['centro_estetica']},
+  {id:'clinica',       nombre:'Clínica / Centro de rehabilitación',     actividades:['clinica_disc']},
+  {id:'solarium',      nombre:'Solarium',                               actividades:['solarium']},
+  {id:'cancha_dep',    nombre:'Cancha deportiva (fútbol/paddle/tennis/squash/voley/básquet)', actividades:['cancha_deportiva']},
+  {id:'gimnasio',      nombre:'Gimnasio · Pilates · Yoga · Artes marciales · Danzas', actividades:['gimnasio_act']},
+  {id:'natatorio',     nombre:'Natatorio',                              actividades:['natatorio']},
+  {id:'colonia',       nombre:'Colonia de vacaciones',                  actividades:['colonia_vac']},
+  {id:'estacion_serv', nombre:'Estación de servicio (GNC / Líquidos)',  actividades:['estacion_servicio']},
+  {id:'idiomas',       nombre:'Instituto de idiomas',                   actividades:['instituto_idiomas']},
+  {id:'cadi',          nombre:'CADI · Jardín maternal / Centro Atención Infantil', actividades:['cadi']},
+];
+
+const ORDENANZAS = [
+  {nro:'7800',  titulo:'Habilitaciones comerciales — Ordenanza marco', descripcion:'Establece los requisitos básicos que debe reunir cualquier establecimiento que requiera habilitación municipal en La Plata.'},
+  {nro:'10799', titulo:'Permanencia de público — Antisiniestral', descripcion:'Regula los requisitos antisiniestrales para locales con permanencia de público (categorías I a V según riesgo y aforo).'},
+  {nro:'137/2025', titulo:'Plan de Regularización de Establecimientos Platenses', descripcion:'Resolución que permite habilitar con planos antecedentes + plano actualizado rubricado por profesional, durante 1 año desde mayo 2025.'},
+  {nro:'10717', titulo:'Mesas y sillas en vía pública', descripcion:'Permiso, condiciones y tasas para uso del espacio público con mobiliario.'},
+  {nro:'8801',  titulo:'Código de habilitación nocturna', descripcion:'Boliches, salones bailables y locales con horario extendido.'},
+  {nro:'9880',  titulo:'Carteles publicitarios y marquesinas', descripcion:'Habilitación de cartelería frontal y luminosa.'},
+  {nro:'ReBA',  titulo:'Registro de Beneficios Adicionales', descripcion:'Inscripción y renovación de licencias municipales adicionales asociadas a la actividad comercial.'},
+];
+
+const TODOS_REQ = [...REQ_BASE, ...REQ_10799, ...REQ_BOMBEROS, ...REQ_REBA, ...REQ_REG137];
+
+/* Devuelve los items de actividades especiales según el rubro */
+function reqActEspeciales(rubroId, ctx){
+  const rub = RUBROS.find(r=>r.id===rubroId);
+  if(!rub || !rub.actividades || !rub.actividades.length) return [];
+  const out = [];
+  for(const actKey of rub.actividades){
+    const act = ACT_ESPECIALES[actKey];
+    if(!act) continue;
+    for(const it of (act.items||[])){
+      // soporta solo_si_act simple (es_gnc, es_liquidos, etc.)
+      if(it.solo_si_act && !ctx[it.solo_si_act]) continue;
+      out.push({
+        ...it,
+        grupo:'especiales',
+        label: `[${act.label}${act.ord?' · Ord. '+act.ord:''}] ${it.label}`,
+      });
+    }
+  }
+  return out;
+}
+
+const STORE_KEY = 'habilitaciones-laplata-v2';
+
+function cargarStore(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if(!raw) return seedInicial();
+    const s = JSON.parse(raw);
+    if(!s.clientes || !s.expedientes) return seedInicial();
+    return s;
+  }catch(e){ return seedInicial(); }
+}
+function guardarStore(s){ localStorage.setItem(STORE_KEY, JSON.stringify(s)); }
+function uid(){ return Math.random().toString(36).slice(2,10) + Date.now().toString(36).slice(-4); }
+
+function seedInicial(){
+  const s = {clientes:[], expedientes:[], creado:Date.now()};
+  s.clientes.push(
+    {id:uid(), persona_tipo:'JURIDICA', razon_social:'Pandaluzza SRL', cuit:'30715678901', email:'admin@pandaluzza.com.ar', telefono:'2214567890', direccion:'Calle 7 N° 1234, La Plata', notas:'Cadena de cafeterías, 3 sucursales activas'},
+    {id:uid(), persona_tipo:'FISICA',   razon_social:'Marcos Bergallo', cuit:'20281234567', dni_titular:'28123456', email:'mbergallo@gmail.com', telefono:'2214321098', direccion:'Diagonal 80 N° 567, La Plata'},
+    {id:uid(), persona_tipo:'JURIDICA', razon_social:'Clínica del Bosque SA', cuit:'30709876543', email:'recepcion@clinicadelbosque.com', telefono:'2214444555', direccion:'Av. 13 N° 890, La Plata', notas:'Centro médico ambulatorio'},
+  );
+  guardarStore(s);
+  return s;
+}
+
+let STORE = cargarStore();
+
+function findRubro(id){ return RUBROS.find(r=>r.id===id); }
+
+function buildContext(exp){
+  const cli = STORE.clientes.find(c=>c.id===exp.cliente_id) || {};
+  const rub = findRubro(exp.rubro_id) || {actividades:[]};
+  const sup = Number(exp.superficie_m2)||0;
+  return {
+    tiene_gas: !!exp.tiene_gas,
+    tiene_agua_caliente: !!exp.tiene_agua_caliente,
+    tiene_mesas_via_publica: !!exp.tiene_mesas_via_publica,
+    es_modificacion: exp.tipo_tramite==='MODIFICACION',
+    es_transferencia: exp.tipo_tramite==='TRANSFERENCIA',
+    es_reba: exp.tipo_tramite==='REBA_INSCRIPCION' || exp.tipo_tramite==='REBA_RENOVACION',
+    es_reba_inscripcion: exp.tipo_tramite==='REBA_INSCRIPCION',
+    es_reba_renovacion: exp.tipo_tramite==='REBA_RENOVACION',
+    permanencia_publico: !!exp.categoria_10799,
+    categoria_10799: exp.categoria_10799 || null,
+    persona_juridica: cli.persona_tipo==='JURIDICA',
+    planos_desactualizados: !!exp.planos_desactualizados,
+    manifestaciones_artisticas: !!exp.manifestaciones_artisticas,
+    superficie_grande: sup > 300 || !!exp.manifestaciones_artisticas,
+    es_gnc: !!exp.es_gnc,
+    es_liquidos: !!exp.es_liquidos,
+  };
+}
+
+function aplica(reglaStr, ctx){
+  if(!reglaStr) return true;
+  const r = reglaStr.toLowerCase().trim();
+  if(r.includes(' or ')){ return r.split(/\s+or\s+/).some(p=>aplica(p, ctx)); }
+  if(r.includes(' and ')){ return r.split(/\s+and\s+/).every(p=>aplica(p, ctx)); }
+  const neg = r.match(/^not\s+([a-z_0-9]+)$/);
+  if(neg) return !ctx[neg[1]];
+  const m = r.match(/^([a-z_0-9]+)\s+in\s+\(([^)]+)\)$/);
+  if(m){
+    const k = m[1];
+    const vals = m[2].split(',').map(v=>v.trim().toUpperCase());
+    return vals.includes(String(ctx[k]||'').toUpperCase());
+  }
+  if(/^[a-z_0-9]+$/.test(r)) return !!ctx[r];
+  return true;
+}
+
+function generarItems(exp){
+  const ctx = buildContext(exp);
+  // requisitos base + actividades especiales
+  const baseFiltrados = TODOS_REQ.filter(req => aplica(req.solo_si, ctx));
+  const actEsp = reqActEspeciales(exp.rubro_id, ctx);
+  return [...baseFiltrados, ...actEsp]
+    .map(req => {
+      const ya = (exp.items||[]).find(i=>i.codigo===req.codigo);
+      return {
+        codigo: req.codigo,
+        grupo: req.grupo,
+        label: req.label,
+        help: req.help || '',
+        obligatorio: !!req.obligatorio,
+        vence: !!req.vence,
+        checked: ya?.checked || false,
+        foja: ya?.foja || '',
+        vencimiento: ya?.vencimiento || '',
+        observacion: ya?.observacion || '',
+      };
+    });
+}
+
+function progresoPct(exp){
+  const items = exp.items || [];
+  const obl = items.filter(i=>i.obligatorio);
+  if(!obl.length) return 0;
+  const done = obl.filter(i=>i.checked).length;
+  return Math.round((done / obl.length) * 100);
+}
+
+function fmtDate(iso){
+  if(!iso) return '—';
+  const [y,m,d] = iso.slice(0,10).split('-');
+  return `${d}/${m}/${y}`;
+}
+function diasHasta(iso){
+  if(!iso) return null;
+  const hoy = new Date(); hoy.setHours(0,0,0,0);
+  const v = new Date(iso); v.setHours(0,0,0,0);
+  return Math.floor((v-hoy)/(1000*60*60*24));
+}
+function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+function toast(msg, kind=''){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + kind;
+  clearTimeout(window._toastT);
+  window._toastT = setTimeout(()=>t.className='toast', 2400);
+}
+
+function modal(html){
+  const m = document.getElementById('modal');
+  document.getElementById('modalBody').innerHTML = html;
+  m.classList.add('show');
+}
+function cerrarModal(ev){
+  if(!ev || ev.target.id==='modal') document.getElementById('modal').classList.remove('show');
+}
+window.cerrarModal = cerrarModal;
+
+function parseHash(){
+  const h = (location.hash||'#/').slice(2);
+  const parts = h.split('/').filter(Boolean);
+  return {ruta: parts[0]||'', id: parts[1]||'', sub: parts[2]||''};
+}
+function navTo(path){ location.hash = '#/' + path; }
+window.navTo = navTo;
+
+function render(){
+  const {ruta, id, sub} = parseHash();
+  document.querySelectorAll('.sidebar .nav a').forEach(a=>{
+    a.classList.toggle('active', a.dataset.route === ruta);
+  });
+  const main = document.getElementById('main');
+  if(ruta==='portal'){
+    document.querySelector('.sidebar').style.display='none';
+    document.body.style.background='var(--mint)';
+    main.innerHTML = renderPortal(id);
+    return;
+  }
+  document.querySelector('.sidebar').style.display='';
+  document.body.style.background='var(--fondo)';
+
+  switch(ruta){
+    case '': main.innerHTML = renderDashboard(); break;
+    case 'expedientes':
+      if(id==='nuevo') main.innerHTML = renderWizard();
+      else if(id) main.innerHTML = renderExpediente(id, sub);
+      else main.innerHTML = renderListaExpedientes();
+      break;
+    case 'historicos': main.innerHTML = renderHistoricos(); break;
+    case 'clientes': main.innerHTML = renderClientes(id); break;
+    case 'vencimientos': main.innerHTML = renderVencimientos(); break;
+    case 'catalogo': main.innerHTML = renderCatalogo(); break;
+    case 'ordenanzas': main.innerHTML = renderOrdenanzas(); break;
+    case 'backup': main.innerHTML = renderBackup(); break;
+    default: main.innerHTML = '<div class="empty"><div class="icon">🔍</div><h3>Página no encontrada</h3><button class="btn btn-primary" onclick="navTo(\'\')">Volver al dashboard</button></div>';
+  }
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange', render);
+
+function renderDashboard(){
+  const exps = STORE.expedientes.filter(e=>e.estado!=='ARCHIVADO');
+  const activos = exps.filter(e=>!['CIERRE','RECHAZADO'].includes(e.estado));
+  const aprobados = exps.filter(e=>e.estado==='APROBADO');
+  const venc = vencProximos();
+
+  return `
+  <div class="page-head">
+    <div>
+      <h1>Dashboard</h1>
+      <div class="sub">Resumen de tu operación · ${new Date().toLocaleDateString('es-AR',{weekday:'long',day:'numeric',month:'long'})}</div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-ghost" onclick="navTo('clientes')"><span>👥</span>Clientes</button>
+      <button class="btn btn-primary" onclick="navTo('expedientes/nuevo')"><span>+</span>Nuevo expediente</button>
+    </div>
+  </div>
+
+  <div class="card-grid mb-md">
+    <div class="card metric"><div class="label">Expedientes activos</div><div class="value">${activos.length}</div></div>
+    <div class="card metric"><div class="label">Aprobados</div><div class="value">${aprobados.length}</div><div class="delta">+${Math.round((aprobados.length/Math.max(1,exps.length))*100)}% del total</div></div>
+    <div class="card metric"><div class="label">Vencimientos próximos</div><div class="value">${venc.length}</div><div class="delta" style="color:${venc.length>0?'#b91c1c':'var(--verde)'}">${venc.length>0?'Atender':'Todo al día'}</div></div>
+    <div class="card metric"><div class="label">Clientes</div><div class="value">${STORE.clientes.length}</div></div>
+  </div>
+
+  <h2 style="font-size:18px;margin:30px 0 14px">Expedientes recientes</h2>
+  ${exps.length === 0 ? `
+    <div class="empty"><div class="icon">📁</div><h3>Sin expedientes todavía</h3><p>Empezá creando tu primer expediente.</p><button class="btn btn-primary" onclick="navTo('expedientes/nuevo')">+ Nuevo expediente</button></div>
+  ` : tablaExpedientes(exps.slice(0,8))}
+  `;
+}
+
+function vencProximos(){
+  const out = [];
+  for(const exp of STORE.expedientes){
+    if(exp.estado==='ARCHIVADO') continue;
+    for(const it of (exp.items||[])){
+      if(!it.vencimiento) continue;
+      const d = diasHasta(it.vencimiento);
+      if(d!==null && d <= 30) out.push({exp, item:it, dias:d});
+    }
+  }
+  return out.sort((a,b)=>a.dias-b.dias);
+}
+
+function tablaExpedientes(exps){
+  if(!exps.length) return '<div class="empty"><div class="icon">📭</div><h3>Sin resultados</h3></div>';
+  const filas = exps.map(e=>{
+    const cli = STORE.clientes.find(c=>c.id===e.cliente_id);
+    const rub = findRubro(e.rubro_id);
+    const est = ESTADOS[e.estado] || ESTADOS.PRE_ENCUADRE;
+    const pct = progresoPct(e);
+    return `
+    <tr>
+      <td><span class="cell-strong">${escapeHtml(e.denominacion||'(sin denominación)')}</span><br><span class="cell-muted">${escapeHtml(cli?.razon_social || '—')}</span></td>
+      <td><span class="cell-muted">${escapeHtml(rub?.nombre || TIPOS_TRAMITE[e.tipo_tramite] || '—')}</span></td>
+      <td><span class="estado ${est.clase}">${est.label}</span></td>
+      <td style="min-width:150px"><div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div><div class="small muted text-right">${pct}%</div></td>
+      <td class="cell-muted">${fmtDate(e.fecha_inicio)}</td>
+      <td><div class="row-actions">
+        <button class="btn-icon" title="Ver" onclick="navTo('expedientes/${e.id}')">👁️</button>
+        <button class="btn-icon" title="Archivar" onclick="confArchivar('${e.id}')">📦</button>
+        <button class="btn-icon" title="Borrar" onclick="confBorrar('${e.id}')" style="color:#b91c1c">🗑️</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  return `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Expediente</th><th>Rubro / Trámite</th><th>Estado</th><th>Progreso</th><th>Inicio</th><th></th></tr></thead><tbody>${filas}</tbody></table></div>`;
+}
+
+function renderListaExpedientes(){
+  const exps = STORE.expedientes.filter(e=>e.estado!=='ARCHIVADO').sort((a,b)=>(b.fecha_inicio||'').localeCompare(a.fecha_inicio||''));
+  return `
+  <div class="page-head">
+    <div><h1>Expedientes</h1><div class="sub">${exps.length} ${exps.length===1?'expediente activo':'expedientes activos'}</div></div>
+    <div class="actions">
+      <button class="btn btn-ghost" onclick="navTo('historicos')"><span>🗄️</span>Ver archivados</button>
+      <button class="btn btn-primary" onclick="navTo('expedientes/nuevo')"><span>+</span>Nuevo</button>
+    </div>
+  </div>
+  ${tablaExpedientes(exps)}`;
+}
+
+function renderHistoricos(){
+  const exps = STORE.expedientes.filter(e=>e.estado==='ARCHIVADO').sort((a,b)=>(b.fecha_archivado||'').localeCompare(a.fecha_archivado||''));
+  return `
+  <div class="page-head">
+    <div><h1>Archivos Históricos</h1><div class="sub">${exps.length} ${exps.length===1?'expediente archivado':'expedientes archivados'}</div></div>
+    <div class="actions"><button class="btn btn-ghost" onclick="navTo('expedientes')">← Volver a activos</button></div>
+  </div>
+  ${exps.length===0 ? `
+    <div class="empty"><div class="icon">🗄️</div><h3>Sin archivados todavía</h3><p>Cuando archives un expediente desde la lista de activos, aparecerá acá.</p></div>
+  ` : `
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Expediente</th><th>Cliente</th><th>Rubro / Trámite</th><th>Estado final</th><th>Archivado</th><th></th></tr></thead>
+      <tbody>${exps.map(e=>{
+        const cli = STORE.clientes.find(c=>c.id===e.cliente_id);
+        const rub = findRubro(e.rubro_id);
+        const estPrev = ESTADOS[e.estado_previo_archivo] || ESTADOS.PRE_ENCUADRE;
+        return `<tr>
+          <td><span class="cell-strong">${escapeHtml(e.denominacion||'(sin denominación)')}</span></td>
+          <td class="cell-muted">${escapeHtml(cli?.razon_social||'—')}</td>
+          <td class="cell-muted">${escapeHtml(rub?.nombre||TIPOS_TRAMITE[e.tipo_tramite]||'—')}</td>
+          <td><span class="estado ${estPrev.clase}">${estPrev.label}</span></td>
+          <td class="cell-muted">${fmtDate(e.fecha_archivado)}</td>
+          <td><div class="row-actions">
+            <button class="btn-icon" title="Ver" onclick="navTo('expedientes/${e.id}')">👁️</button>
+            <button class="btn-icon" title="Desarchivar" onclick="desarchivar('${e.id}')">📤</button>
+            <button class="btn-icon" title="Borrar definitivamente" onclick="confBorrar('${e.id}')" style="color:#b91c1c">🗑️</button>
+          </div></td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table></div>
+  `}`;
+}
+
+function confArchivar(id){
+  const e = STORE.expedientes.find(x=>x.id===id);
+  if(!e) return;
+  modal(`
+    <h3>Archivar expediente</h3>
+    <p>El expediente <b>${escapeHtml(e.denominacion||'sin nombre')}</b> se moverá a Archivos Históricos. Lo vas a poder consultar cuando quieras y desarchivar si lo necesitás.</p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="cerrarModal({target:{id:'modal'}})">Cancelar</button>
+      <button class="btn btn-primary" onclick="archivar('${id}')">📦 Archivar</button>
+    </div>
+  `);
+}
+window.confArchivar = confArchivar;
+
+function archivar(id){
+  const e = STORE.expedientes.find(x=>x.id===id);
+  if(!e) return;
+  e.estado_previo_archivo = e.estado;
+  e.estado = 'ARCHIVADO';
+  e.fecha_archivado = new Date().toISOString().slice(0,10);
+  guardarStore(STORE);
+  cerrarModal({target:{id:'modal'}});
+  toast('Expediente archivado', 'ok');
+  render();
+}
+window.archivar = archivar;
+
+function desarchivar(id){
+  const e = STORE.expedientes.find(x=>x.id===id);
+  if(!e) return;
+  e.estado = e.estado_previo_archivo || 'EN_CARGA';
+  delete e.estado_previo_archivo;
+  delete e.fecha_archivado;
+  guardarStore(STORE);
+  toast('Expediente reactivado', 'ok');
+  render();
+}
+window.desarchivar = desarchivar;
+
+function confBorrar(id){
+  const e = STORE.expedientes.find(x=>x.id===id);
+  if(!e) return;
+  modal(`
+    <h3 style="color:#b91c1c">Borrar expediente</h3>
+    <p>Esta acción es <b>irreversible</b>. Se va a borrar el expediente <b>${escapeHtml(e.denominacion||'sin nombre')}</b>, sus items, fojas y observaciones.</p>
+    <p>Si solo querés sacarlo del listado activo, mejor archivalo.</p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="cerrarModal({target:{id:'modal'}})">Cancelar</button>
+      <button class="btn btn-danger" onclick="borrar('${id}')">🗑️ Borrar definitivamente</button>
+    </div>
+  `);
+}
+window.confBorrar = confBorrar;
+
+function borrar(id){
+  STORE.expedientes = STORE.expedientes.filter(x=>x.id!==id);
+  guardarStore(STORE);
+  cerrarModal({target:{id:'modal'}});
+  toast('Expediente borrado', 'error');
+  navTo('expedientes');
+}
+window.borrar = borrar;
+
+/* ═══════════════════════════════════════════════════════════
+   CAMBIAR RUBRO + HISTORIAL
+   ═══════════════════════════════════════════════════════════ */
+function confCambiarRubro(id){
+  const e = STORE.expedientes.find(x=>x.id===id);
+  if(!e) return;
+  const rubActual = findRubro(e.rubro_id);
+  modal(`
+    <h3>🔁 Cambiar rubro del expediente</h3>
+    <p>Rubro actual: <b>${escapeHtml(rubActual?.nombre||'(ninguno)')}</b></p>
+    <p class="muted small">Al cambiar el rubro se regenera el checklist con los nuevos requisitos. Los ítems ya marcados que sigan aplicando mantienen su estado, foja y observaciones. Los nuevos quedan sin marcar.</p>
+
+    <div class="form-group">
+      <label class="form-label">Nuevo rubro</label>
+      <select class="form-select" id="cr_nuevo_rubro">
+        ${RUBROS.map(r=>`<option value="${r.id}" ${r.id===e.rubro_id?'selected':''}>${escapeHtml(r.nombre)}</option>`).join('')}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Motivo del cambio</label>
+      <textarea class="form-textarea" id="cr_motivo" placeholder="Ej. Re-encuadre por inspección · Cambio de actividad principal · Error en alta inicial..."></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="cerrarModal({target:{id:'modal'}})">Cancelar</button>
+      <button class="btn btn-primary" onclick="aplicarCambioRubro('${id}')">✓ Aplicar cambio</button>
+    </div>
+  `);
+}
+window.confCambiarRubro = confCambiarRubro;
+
+function aplicarCambioRubro(id){
+  const e = STORE.expedientes.find(x=>x.id===id);
+  if(!e) return;
+  const nuevo = document.getElementById('cr_nuevo_rubro').value;
+  const motivo = document.getElementById('cr_motivo').value.trim();
+  if(!nuevo){ toast('Elegí un rubro','error'); return; }
+  if(nuevo === e.rubro_id){ toast('Es el mismo rubro','error'); return; }
+  if(!motivo){ toast('Cargá un motivo del cambio','error'); return; }
+
+  // Trazabilidad
+  if(!e.historial_rubros) e.historial_rubros = [];
+  e.historial_rubros.push({
+    rubro_id: nuevo,
+    rubro_anterior: e.rubro_id,
+    fecha: new Date().toISOString().slice(0,10),
+    motivo: motivo,
+    usuario: 'Gestor',
+  });
+  e.rubro_id = nuevo;
+  // Regenerar items preservando estado
+  e.items = generarItems(e);
+  guardarStore(STORE);
+  cerrarModal({target:{id:'modal'}});
+  toast('Rubro actualizado · checklist regenerado','ok');
+  render();
+}
+window.aplicarCambioRubro = aplicarCambioRubro;
+
+/* ═══════════════════════════════════════════════════════════
+   TAB · ACTIVIDAD COMERCIAL (Memoria + NAIIB + Historial rubros)
+   ═══════════════════════════════════════════════════════════ */
+function renderTabActividad(e){
+  if(!e.actividades_naiib) e.actividades_naiib = [];
+  if(!e.historial_rubros) e.historial_rubros = [];
+  const cli = STORE.clientes.find(c=>c.id===e.cliente_id) || {};
+  const cliEsTitular = cli.tipo_contacto === 'titular';
+  // Si el cliente es titular, default = mismo. Si es representante, default = NO mismo (forzar carga)
+  if(!e.titular) e.titular = {persona_tipo:'FISICA', es_mismo_cliente: cliEsTitular};
+  // Si el cliente es representante, no permitir "es mismo"
+  if(!cliEsTitular && e.titular.es_mismo_cliente) e.titular.es_mismo_cliente = false;
+  const filas = e.actividades_naiib;
+  const t = e.titular;
+  const titularFaltante = !cliEsTitular && !t.razon_social;
+
+  return `
+  <div class="card mb-md" style="border-left:4px solid ${titularFaltante?'#b91c1c':'var(--verde-acento)'}">
+    <div class="row gap-sm" style="justify-content:space-between;align-items:flex-start">
+      <div style="flex:1">
+        <h3 style="font-size:16px;margin-bottom:6px">🧑‍💼 Titular del comercio ${titularFaltante?'<span class="badge badge-red" style="margin-left:8px">⚠ FALTAN DATOS</span>':''}</h3>
+        <p class="muted small" style="margin-bottom:0">Datos del dueño legal de la habilitación — los que figuran en el certificado municipal.</p>
+      </div>
+    </div>
+
+    ${cliEsTitular ? `
+      <label class="form-check ${t.es_mismo_cliente?'checked':''}" style="margin-top:14px">
+        <input type="checkbox" ${t.es_mismo_cliente?'checked':''} onchange="titularToggleMismo('${e.id}',this.checked)">
+        <div>
+          <div class="label-text">El titular es la misma persona que el cliente</div>
+          <div class="label-help">Tildado: usa los datos del cliente <b>${escapeHtml(cli.razon_social||'')}</b> (titular). Destildado: cargás un titular distinto.</div>
+        </div>
+      </label>
+    ` : `
+      <div class="card mb-md mt-md" style="background:#fef3c7;border:1px solid #fde68a;box-shadow:none">
+        <div class="row gap-sm" style="align-items:flex-start">
+          <div style="font-size:18px">📌</div>
+          <div class="small">
+            El cliente <b>${escapeHtml(cli.razon_social||'')}</b> está cargado como <b>👤 Representante</b>, no como titular. Necesitás cargar acá los datos completos del <b>titular del comercio</b> (los que van a figurar en la habilitación municipal).
+          </div>
+        </div>
+      </div>
+    `}
+
+    ${t.es_mismo_cliente ? `
+      <div class="card mb-md mt-md" style="background:var(--mint);box-shadow:none">
+        <div class="col gap-sm small">
+          <div><b>Tipo:</b> ${cli.persona_tipo||'—'}</div>
+          <div><b>Razón social / Nombre:</b> ${escapeHtml(cli.razon_social||'—')}</div>
+          <div><b>CUIT/CUIL:</b> ${escapeHtml(cli.cuit||'—')}</div>
+          <div><b>DNI:</b> ${escapeHtml(cli.dni_titular||'—')}</div>
+          <div><b>Email / Tel:</b> ${escapeHtml(cli.email||'—')} · ${escapeHtml(cli.telefono||'—')}</div>
+          <div><b>Domicilio:</b> ${escapeHtml(cli.direccion||'—')}</div>
+        </div>
+      </div>
+    ` : `
+      <div class="form-row mt-md">
+        <div class="form-group">
+          <label class="form-label">Tipo de persona</label>
+          <select class="form-select" id="tit_persona_tipo_${e.id}" onchange="titularUpd('${e.id}','persona_tipo',this.value)">
+            <option value="FISICA"   ${t.persona_tipo==='FISICA'?'selected':''}>Persona física</option>
+            <option value="JURIDICA" ${t.persona_tipo==='JURIDICA'?'selected':''}>Persona jurídica</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">CUIT / CUIL</label>
+          <input class="form-input" value="${escapeHtml(t.cuit||'')}" oninput="titularUpd('${e.id}','cuit',this.value)">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nombre y apellido / Razón social</label>
+        <input class="form-input" value="${escapeHtml(t.razon_social||'')}" oninput="titularUpd('${e.id}','razon_social',this.value)">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">DNI</label>
+          <input class="form-input" value="${escapeHtml(t.dni_titular||'')}" oninput="titularUpd('${e.id}','dni_titular',this.value)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Teléfono</label>
+          <input class="form-input" value="${escapeHtml(t.telefono||'')}" oninput="titularUpd('${e.id}','telefono',this.value)">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" value="${escapeHtml(t.email||'')}" oninput="titularUpd('${e.id}','email',this.value)">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Domicilio fiscal</label>
+        <input class="form-input" value="${escapeHtml(t.direccion||'')}" oninput="titularUpd('${e.id}','direccion',this.value)">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notas sobre el titular</label>
+        <textarea class="form-textarea" oninput="titularUpd('${e.id}','notas',this.value)" placeholder="Cualquier información extra del titular...">${escapeHtml(t.notas||'')}</textarea>
+      </div>
+    `}
+  </div>
+
+  <div class="card mb-md">
+    <h3 style="font-size:16px;margin-bottom:6px">📝 Memoria descriptiva</h3>
+    <p class="muted small mb-md">Detalle libre de la actividad comercial del solicitante: qué hace, cómo lo hace, horarios, equipamiento, materiales, etc.</p>
+    <textarea class="form-textarea" id="memoria_${e.id}" style="min-height:160px" placeholder="Ej: El comercio se dedica a la venta minorista de productos de limpieza domiciliaria e industrial. Atención al público de lunes a sábados de 9 a 19 hs. Cuenta con depósito propio de 40 m². No realiza fraccionamiento, solo venta en envase original del proveedor...">${escapeHtml(e.memoria_descriptiva||'')}</textarea>
+    <div class="row mt-md" style="justify-content:flex-end">
+      <button class="btn btn-primary btn-sm" onclick="guardarMemoria('${e.id}')">💾 Guardar memoria</button>
+    </div>
+  </div>
+
+  <div class="card mb-md">
+    <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
+      <h3 style="font-size:16px">🏷️ Actividades NAIIB / IIBB</h3>
+      <button class="btn btn-primary btn-sm" onclick="naiibAddRow('${e.id}')">+ Agregar actividad</button>
+    </div>
+    <p class="muted small mb-md">Códigos de actividad económica (Nomenclador AFIP-IIBB). Sumá tantas líneas como actividades declare el contribuyente.</p>
+
+    ${filas.length === 0 ? `
+      <div class="empty" style="padding:30px"><div class="icon">📋</div><p style="margin-bottom:0">Todavía no cargaste actividades.<br>Hacé click en <b>+ Agregar actividad</b> para empezar.</p></div>
+    ` : `
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr>
+            <th style="width:130px">Código</th>
+            <th>Descripción</th>
+            <th style="width:90px"></th>
+          </tr></thead>
+          <tbody>
+            ${filas.map((f,idx)=>`
+              <tr>
+                <td><input type="text" class="form-input font-mono" inputmode="numeric" maxlength="10" placeholder="475440" value="${escapeHtml(f.codigo||'')}" oninput="naiibUpd('${e.id}',${idx},'codigo',this.value)"></td>
+                <td><input type="text" class="form-input" placeholder="Venta al por menor de artículos de limpieza" value="${escapeHtml(f.descripcion||'')}" oninput="naiibUpd('${e.id}',${idx},'descripcion',this.value)"></td>
+                <td class="text-right"><button class="btn-icon" title="Eliminar" onclick="naiibDelRow('${e.id}',${idx})" style="color:#b91c1c">🗑️</button></td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+      <div class="row mt-md" style="justify-content:space-between;align-items:center">
+        <span class="muted small">${filas.length} actividad${filas.length===1?'':'es'} cargada${filas.length===1?'':'s'}</span>
+        <div class="row gap-sm">
+          <button class="btn btn-ghost btn-sm" onclick="naiibAddRow('${e.id}')">+ Agregar otra</button>
+        </div>
+      </div>
+    `}
+  </div>
+
+  ${e.historial_rubros && e.historial_rubros.length > 1 ? `
+  <div class="card">
+    <h3 style="font-size:16px;margin-bottom:6px">🕒 Historial de cambios de rubro</h3>
+    <p class="muted small mb-md">Trazabilidad completa de las modificaciones de rubro principal.</p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th style="width:110px">Fecha</th><th>Rubro</th><th>Motivo</th><th style="width:90px">Usuario</th></tr></thead>
+      <tbody>
+        ${[...e.historial_rubros].reverse().map((h,idx)=>{
+          const rub = findRubro(h.rubro_id);
+          const isLatest = idx === 0;
+          return `<tr>
+            <td class="cell-muted">${fmtDate(h.fecha)}</td>
+            <td><span class="cell-strong">${escapeHtml(rub?.nombre||h.rubro_id)}</span> ${isLatest?'<span class="pill" style="margin-left:6px">actual</span>':''}</td>
+            <td class="cell-muted">${escapeHtml(h.motivo||'—')}</td>
+            <td class="cell-muted">${escapeHtml(h.usuario||'—')}</td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table></div>
+  </div>
+  ` : ''}
+  `;
+}
+
+function guardarMemoria(id){
+  const e = STORE.expedientes.find(x=>x.id===id); if(!e) return;
+  e.memoria_descriptiva = document.getElementById('memoria_'+id).value;
+  guardarStore(STORE);
+  toast('Memoria guardada','ok');
+}
+window.guardarMemoria = guardarMemoria;
+
+function naiibAddRow(id){
+  const e = STORE.expedientes.find(x=>x.id===id); if(!e) return;
+  if(!e.actividades_naiib) e.actividades_naiib = [];
+  e.actividades_naiib.push({codigo:'', descripcion:''});
+  guardarStore(STORE);
+  render();
+}
+window.naiibAddRow = naiibAddRow;
+
+function naiibDelRow(id, idx){
+  const e = STORE.expedientes.find(x=>x.id===id); if(!e) return;
+  if(!confirm('¿Eliminar esta actividad?')) return;
+  e.actividades_naiib.splice(idx,1);
+  guardarStore(STORE);
+  toast('Actividad eliminada','error');
+  render();
+}
+window.naiibDelRow = naiibDelRow;
+
+function naiibUpd(id, idx, k, v){
+  const e = STORE.expedientes.find(x=>x.id===id); if(!e) return;
+  if(!e.actividades_naiib[idx]) return;
+  e.actividades_naiib[idx][k] = v;
+  guardarStore(STORE);
+}
+window.naiibUpd = naiibUpd;
+
+/* ── Titular del comercio (puede diferir del cliente) ── */
+function titularToggleMismo(id, val){
+  const e = STORE.expedientes.find(x=>x.id===id); if(!e) return;
+  if(!e.titular) e.titular = {};
+  e.titular.es_mismo_cliente = val;
+  guardarStore(STORE);
+  render();
+}
+window.titularToggleMismo = titularToggleMismo;
+
+function titularUpd(id, k, v){
+  const e = STORE.expedientes.find(x=>x.id===id); if(!e) return;
+  if(!e.titular) e.titular = {};
+  e.titular[k] = v;
+  guardarStore(STORE);
+}
+window.titularUpd = titularUpd;
+
+/* Devuelve los datos efectivos del titular del comercio
+   (titular propio del expediente, o fallback al cliente si "es_mismo_cliente") */
+function getTitular(exp){
+  const cli = STORE.clientes.find(c=>c.id===exp.cliente_id) || {};
+  const t = exp.titular;
+  if(!t || t.es_mismo_cliente){
+    return {
+      persona_tipo: cli.persona_tipo,
+      razon_social: cli.razon_social,
+      cuit: cli.cuit,
+      dni_titular: cli.dni_titular,
+      telefono: cli.telefono,
+      email: cli.email,
+      direccion: cli.direccion,
+      es_mismo_cliente: true,
+    };
+  }
+  return {...t, es_mismo_cliente:false};
+}
+
+let wiz = null;
+
+function renderWizard(){
+  if(!wiz) wiz = {
+    step:1, cliente_id:'', cliente_nuevo:null, nuevo_modo:false,
+    tipo_tramite:'HABILITACION_NUEVA', rubro_id:'',
+    denominacion:'', direccion_comercial:'', partida_inmobiliaria:'',
+    superficie_m2:'', factor_ocupacion:'', numero_municipal:'',
+    categoria_10799:'', tiene_gas:false, tiene_agua_caliente:false,
+    tiene_mesas_via_publica:false, planos_desactualizados:false, notas:'',
+  };
+
+  const isReba = wiz.tipo_tramite==='REBA_INSCRIPCION' || wiz.tipo_tramite==='REBA_RENOVACION';
+  const steps = isReba
+    ? ['Titular','Trámite','Datos','Revisar']
+    : ['Titular','Trámite','Comercio','Condiciones','Revisar'];
+  const totalSteps = steps.length;
+
+  let body = '';
+  if(wiz.step===1) body = wizPaso1();
+  else if(wiz.step===2) body = wizPaso2();
+  else if(wiz.step===3 && isReba) body = wizPasoRebaDatos();
+  else if(wiz.step===3) body = wizPaso3Comercio();
+  else if(wiz.step===4 && isReba) body = wizPasoRevisar();
+  else if(wiz.step===4) body = wizPaso4Condiciones();
+  else if(wiz.step===5) body = wizPasoRevisar();
+
+  return `
+  <div class="page-head">
+    <div><h1>Nuevo expediente</h1><div class="sub">Wizard guiado · paso ${wiz.step} de ${totalSteps}</div></div>
+    <div class="actions"><button class="btn btn-ghost" onclick="cancelarWizard()">Cancelar</button></div>
+  </div>
+
+  <div class="wizard">
+    <div class="stepper">
+      ${steps.map((label,i)=>{
+        const n = i+1;
+        let cls = '';
+        if(n < wiz.step) cls = 'done';
+        if(n === wiz.step) cls = 'active';
+        return `<div class="step ${cls}"><div class="num">${n}</div><div class="lbl">${label}</div></div>`;
+      }).join('')}
+    </div>
+
+    <div class="wiz-step-card">${body}</div>
+  </div>
+  `;
+}
+
+function wizPaso1(){
+  return `
+    <h2>¿Quién es el titular?</h2>
+    <div class="step-sub">Elegí un cliente existente o cargá uno nuevo.</div>
+
+    <div class="form-group">
+      <label class="form-label">Cliente</label>
+      <select class="form-select" onchange="wizSetCliente(this.value)">
+        <option value="">— Elegir cliente existente —</option>
+        ${STORE.clientes.map(c=>`<option value="${c.id}" ${wiz.cliente_id===c.id?'selected':''}>${escapeHtml(c.razon_social)} · CUIT ${c.cuit||'—'} · ${c.persona_tipo}</option>`).join('')}
+        <option value="__nuevo__" ${wiz.nuevo_modo?'selected':''}>＋ Cargar cliente nuevo</option>
+      </select>
+    </div>
+
+    ${wiz.nuevo_modo ? `
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Tipo de persona</label>
+          <select class="form-select" onchange="wizCNuevo('persona_tipo',this.value)">
+            <option value="FISICA" ${wiz.cliente_nuevo?.persona_tipo==='FISICA'?'selected':''}>Persona física</option>
+            <option value="JURIDICA" ${wiz.cliente_nuevo?.persona_tipo==='JURIDICA'?'selected':''}>Persona jurídica</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">CUIT / CUIL</label>
+          <input class="form-input" placeholder="20-12345678-9" value="${escapeHtml(wiz.cliente_nuevo?.cuit||'')}" oninput="wizCNuevo('cuit',this.value)">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Razón social / Nombre completo</label>
+        <input class="form-input" placeholder="Ej. Pandaluzza SRL" value="${escapeHtml(wiz.cliente_nuevo?.razon_social||'')}" oninput="wizCNuevo('razon_social',this.value)">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">DNI titular</label>
+          <input class="form-input" value="${escapeHtml(wiz.cliente_nuevo?.dni_titular||'')}" oninput="wizCNuevo('dni_titular',this.value)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Teléfono</label>
+          <input class="form-input" value="${escapeHtml(wiz.cliente_nuevo?.telefono||'')}" oninput="wizCNuevo('telefono',this.value)">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" value="${escapeHtml(wiz.cliente_nuevo?.email||'')}" oninput="wizCNuevo('email',this.value)">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Dirección fiscal</label>
+        <input class="form-input" value="${escapeHtml(wiz.cliente_nuevo?.direccion||'')}" oninput="wizCNuevo('direccion',this.value)">
+      </div>
+    ` : ''}
+
+    ${wizNav(false, true)}
+  `;
+}
+
+function wizPaso2(){
+  return `
+    <h2>¿Qué trámite es?</h2>
+    <div class="step-sub">Esto define el listado de requisitos a cumplir.</div>
+
+    ${Object.entries(TIPOS_TRAMITE).map(([k,v])=>`
+      <label class="form-check ${wiz.tipo_tramite===k?'checked':''}">
+        <input type="radio" name="tipo_tramite" value="${k}" ${wiz.tipo_tramite===k?'checked':''} onchange="wizSetRender('tipo_tramite','${k}')">
+        <div>
+          <div class="label-text">${v}</div>
+          <div class="label-help">${tramiteDesc(k)}</div>
+        </div>
+      </label>
+    `).join('')}
+
+    ${wizNav(true, true)}
+  `;
+}
+
+function tramiteDesc(k){
+  return ({
+    HABILITACION_NUEVA:'Alta de un nuevo comercio.',
+    MODIFICACION:'Cambio de superficie, rubro o titularidad parcial.',
+    TRANSFERENCIA:'Cambio de titular sobre habilitación existente.',
+    CIERRE:'Baja de habilitación.',
+    REBA_INSCRIPCION:'Inscripción inicial al Registro de Beneficios Adicionales.',
+    REBA_RENOVACION:'Renovación anual de licencia ReBA.',
+  })[k]||'';
+}
+
+function wizPaso3Comercio(){
+  return `
+    <h2>Datos del comercio</h2>
+    <div class="step-sub">Información del local y del rubro.</div>
+
+    <div class="form-group">
+      <label class="form-label">Denominación / Nombre de fantasía</label>
+      <input class="form-input" placeholder="Ej. Café Pandaluzza" value="${escapeHtml(wiz.denominacion)}" oninput="wizSet('denominacion',this.value)">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Dirección comercial</label>
+      <input class="form-input" placeholder="Calle 7 N° 1234" value="${escapeHtml(wiz.direccion_comercial)}" oninput="wizSet('direccion_comercial',this.value)">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Partida inmobiliaria</label>
+        <input class="form-input" value="${escapeHtml(wiz.partida_inmobiliaria)}" oninput="wizSet('partida_inmobiliaria',this.value)">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Número municipal</label>
+        <input class="form-input" value="${escapeHtml(wiz.numero_municipal)}" oninput="wizSet('numero_municipal',this.value)">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Superficie (m²)</label>
+        <input class="form-input" type="number" value="${wiz.superficie_m2}" oninput="wizSet('superficie_m2',this.value)">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Factor de ocupación (personas)</label>
+        <input class="form-input" type="number" value="${wiz.factor_ocupacion}" oninput="wizSet('factor_ocupacion',this.value)">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Rubro</label>
+      <select class="form-select" onchange="wizSet('rubro_id',this.value)">
+        <option value="">— Elegir rubro —</option>
+        ${RUBROS.map(r=>`<option value="${r.id}" ${wiz.rubro_id===r.id?'selected':''}>${r.nombre}</option>`).join('')}
+      </select>
+    </div>
+
+    ${wizNav(true, true)}
+  `;
+}
+
+function wizPaso4Condiciones(){
+  const rub = findRubro(wiz.rubro_id);
+  const sugiereGas = rub?.flags.includes('tiene_gas');
+  const sugierePerm = rub?.flags.includes('permanencia_publico');
+  return `
+    <h2>Condiciones del local</h2>
+    <div class="step-sub">Esto activa requisitos extra. Si no estás seguro, marcá lo que aplique.</div>
+
+    <label class="form-check ${wiz.tiene_gas?'checked':''}">
+      <input type="checkbox" ${wiz.tiene_gas?'checked':''} onchange="wizSet('tiene_gas',this.checked)">
+      <div>
+        <div class="label-text">Tiene instalación de gas ${sugiereGas?'<span class="pill">sugerido por rubro</span>':''}</div>
+        <div class="label-help">Activa el certificado de instalación de gas matriculado.</div>
+      </div>
+    </label>
+
+    <label class="form-check ${wiz.tiene_agua_caliente?'checked':''}">
+      <input type="checkbox" ${wiz.tiene_agua_caliente?'checked':''} onchange="wizSet('tiene_agua_caliente',this.checked)">
+      <div><div class="label-text">Tiene agua caliente sanitaria</div><div class="label-help">Activa el certificado correspondiente.</div></div>
+    </label>
+
+    <label class="form-check ${wiz.tiene_mesas_via_publica?'checked':''}">
+      <input type="checkbox" ${wiz.tiene_mesas_via_publica?'checked':''} onchange="wizSet('tiene_mesas_via_publica',this.checked)">
+      <div><div class="label-text">Mesas / sillas en vía pública</div><div class="label-help">Activa el permiso de uso de espacio público.</div></div>
+    </label>
+
+    <label class="form-check ${wiz.planos_desactualizados?'checked':''}">
+      <input type="checkbox" ${wiz.planos_desactualizados?'checked':''} onchange="wizSet('planos_desactualizados',this.checked)">
+      <div>
+        <div class="label-text">Los planos antecedentes están desactualizados</div>
+        <div class="label-help">Activa el circuito de la <b>Resolución 137/2025</b> · Plan de Regularización.</div>
+      </div>
+    </label>
+
+    <div class="form-group mt-lg">
+      <label class="form-label">Categoría Ord. 10799 (permanencia público) ${sugierePerm?'<span class="pill">sugerido por rubro</span>':''}</label>
+      <select class="form-select" onchange="wizSet('categoria_10799',this.value)">
+        <option value="">— No aplica —</option>
+        <option value="I"   ${wiz.categoria_10799==='I'?'selected':''}>I — Bajo riesgo · &lt; 50 pers.</option>
+        <option value="II"  ${wiz.categoria_10799==='II'?'selected':''}>II — Riesgo medio · 50–150 pers.</option>
+        <option value="III" ${wiz.categoria_10799==='III'?'selected':''}>III — Alto riesgo · 150–500 pers.</option>
+        <option value="IV"  ${wiz.categoria_10799==='IV'?'selected':''}>IV — Muy alto · 500–1500 pers.</option>
+        <option value="V"   ${wiz.categoria_10799==='V'?'selected':''}>V — Crítico · &gt; 1500 pers.</option>
+      </select>
+      <div class="form-help">Activa requisitos antisiniestrales escalonados + bomberos + Ord. 10799.</div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Notas internas</label>
+      <textarea class="form-textarea" oninput="wizSet('notas',this.value)" placeholder="Algo a recordar sobre este expediente...">${escapeHtml(wiz.notas)}</textarea>
+    </div>
+
+    ${wizNav(true, true)}
+  `;
+}
+
+function wizPasoRebaDatos(){
+  return `
+    <h2>Datos del comercio (ReBA)</h2>
+    <div class="step-sub">Información mínima del establecimiento.</div>
+
+    <div class="form-group">
+      <label class="form-label">Denominación / Nombre de fantasía</label>
+      <input class="form-input" value="${escapeHtml(wiz.denominacion)}" oninput="wizSet('denominacion',this.value)">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Dirección comercial</label>
+      <input class="form-input" value="${escapeHtml(wiz.direccion_comercial)}" oninput="wizSet('direccion_comercial',this.value)">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">N° de habilitación vigente</label>
+        <input class="form-input" value="${escapeHtml(wiz.numero_municipal)}" oninput="wizSet('numero_municipal',this.value)">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Rubro</label>
+        <select class="form-select" onchange="wizSet('rubro_id',this.value)">
+          <option value="">— Elegir rubro —</option>
+          ${RUBROS.map(r=>`<option value="${r.id}" ${wiz.rubro_id===r.id?'selected':''}>${r.nombre}</option>`).join('')}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Notas</label>
+      <textarea class="form-textarea" oninput="wizSet('notas',this.value)">${escapeHtml(wiz.notas)}</textarea>
+    </div>
+    ${wizNav(true, true)}
+  `;
+}
+
+function wizPasoRevisar(){
+  const cliEx = STORE.clientes.find(c=>c.id===wiz.cliente_id);
+  const cli = wiz.cliente_nuevo || cliEx;
+  const rub = findRubro(wiz.rubro_id);
+  const isReba = wiz.tipo_tramite==='REBA_INSCRIPCION' || wiz.tipo_tramite==='REBA_RENOVACION';
+  const fakeExp = {
+    cliente_id: wiz.cliente_id || (wiz.cliente_nuevo ? '__nuevo__' : ''),
+    rubro_id: wiz.rubro_id, tipo_tramite: wiz.tipo_tramite,
+    tiene_gas:wiz.tiene_gas, tiene_agua_caliente:wiz.tiene_agua_caliente,
+    tiene_mesas_via_publica:wiz.tiene_mesas_via_publica,
+    planos_desactualizados:wiz.planos_desactualizados,
+    categoria_10799:wiz.categoria_10799||null,
+    items:[]
+  };
+  if(wiz.cliente_nuevo && !cliEx){
+    STORE.clientes.push({id:'__preview__', persona_tipo:wiz.cliente_nuevo.persona_tipo, razon_social:'preview'});
+    fakeExp.cliente_id = '__preview__';
+  }
+  const items = generarItems(fakeExp);
+  if(wiz.cliente_nuevo && !cliEx){
+    STORE.clientes = STORE.clientes.filter(c=>c.id!=='__preview__');
+  }
+
+  return `
+    <h2>Revisá antes de crear</h2>
+    <div class="step-sub">Si está todo bien, dale "Crear expediente".</div>
+
+    <div class="card mb-md" style="background:var(--mint);border-color:rgba(26,122,74,.2)">
+      <h4 style="font-size:11px;text-transform:uppercase;color:var(--verde);margin-bottom:8px;letter-spacing:.06em;font-family:'Poppins'">Titular</h4>
+      <div><b>${escapeHtml(cli?.razon_social||'—')}</b> ${cli?.persona_tipo?`<span class="pill">${cli.persona_tipo}</span>`:''}</div>
+      <div class="muted small">${escapeHtml(cli?.cuit||'')} ${cli?.email?'· '+escapeHtml(cli.email):''} ${cli?.telefono?'· '+escapeHtml(cli.telefono):''}</div>
+    </div>
+
+    <div class="card mb-md" style="background:var(--mint);border-color:rgba(26,122,74,.2)">
+      <h4 style="font-size:11px;text-transform:uppercase;color:var(--verde);margin-bottom:8px;letter-spacing:.06em;font-family:'Poppins'">Trámite</h4>
+      <div><b>${TIPOS_TRAMITE[wiz.tipo_tramite]}</b></div>
+      ${rub ? `<div class="muted small">Rubro: ${escapeHtml(rub.nombre)}</div>` : ''}
+      ${wiz.denominacion ? `<div class="muted small">Local: ${escapeHtml(wiz.denominacion)} · ${escapeHtml(wiz.direccion_comercial||'')}</div>` : ''}
+    </div>
+
+    ${!isReba ? `
+    <div class="card mb-md" style="background:var(--mint);border-color:rgba(26,122,74,.2)">
+      <h4 style="font-size:11px;text-transform:uppercase;color:var(--verde);margin-bottom:8px;letter-spacing:.06em;font-family:'Poppins'">Condiciones</h4>
+      <div class="row wrap gap-sm">
+        ${wiz.tiene_gas?'<span class="badge badge-info">Gas</span>':''}
+        ${wiz.tiene_agua_caliente?'<span class="badge badge-info">Agua caliente</span>':''}
+        ${wiz.tiene_mesas_via_publica?'<span class="badge badge-info">Mesas vía pública</span>':''}
+        ${wiz.planos_desactualizados?'<span class="badge badge-acento">Res. 137/2025</span>':''}
+        ${wiz.categoria_10799?`<span class="badge badge-amber">Ord. 10799 · Cat. ${wiz.categoria_10799}</span>`:''}
+      </div>
+    </div>` : ''}
+
+    <div class="card mb-md" style="border-color:rgba(26,122,74,.2)">
+      <h4 style="font-size:11px;text-transform:uppercase;color:var(--verde);margin-bottom:8px;letter-spacing:.06em;font-family:'Poppins'">Requisitos generados</h4>
+      <div class="muted small mb-md">Se van a crear <b style="color:var(--navy)">${items.length}</b> ítems en el checklist (${items.filter(i=>i.obligatorio).length} obligatorios) según las condiciones que marcaste.</div>
+      <div class="row wrap gap-sm">
+        ${[...new Set(items.map(i=>i.grupo))].map(g=>`<span class="pill">${GRUPOS[g]||g} · ${items.filter(i=>i.grupo===g).length}</span>`).join('')}
+      </div>
+    </div>
+
+    <div class="wiz-nav">
+      <button class="btn btn-ghost" onclick="wizStep(-1)">← Atrás</button>
+      <button class="btn btn-primary" onclick="crearExpediente()">✓ Crear expediente</button>
+    </div>
+  `;
+}
+
+function wizNav(canBack, canNext){
+  return `<div class="wiz-nav">
+    ${canBack ? '<button class="btn btn-ghost" onclick="wizStep(-1)">← Atrás</button>' : '<div></div>'}
+    ${canNext ? '<button class="btn btn-primary" onclick="wizStep(1)">Siguiente →</button>' : '<div></div>'}
+  </div>`;
+}
+
+function wizSet(k,v){ wiz[k] = (v==='true'?true: v==='false'?false: v); }
+function wizSetRender(k,v){ wiz[k]=v; render(); }
+function wizSetCliente(v){
+  if(v==='__nuevo__'){
+    wiz.nuevo_modo = true;
+    wiz.cliente_id = '';
+    if(!wiz.cliente_nuevo) wiz.cliente_nuevo = {persona_tipo:'FISICA', razon_social:'', cuit:''};
+  }else{
+    wiz.nuevo_modo = false;
+    wiz.cliente_id = v;
+    wiz.cliente_nuevo = null;
+  }
+  render();
+}
+function wizCNuevo(k,v){ if(!wiz.cliente_nuevo) wiz.cliente_nuevo={}; wiz.cliente_nuevo[k]=v; }
+window.wizSet = wizSet; window.wizSetRender = wizSetRender;
+window.wizSetCliente = wizSetCliente; window.wizCNuevo = wizCNuevo;
+
+function wizStep(delta){
+  const target = wiz.step + delta;
+  if(delta>0){
+    if(wiz.step===1){
+      if(!wiz.cliente_id && !wiz.nuevo_modo){ toast('Elegí un cliente o cargá uno nuevo','error'); return; }
+      if(wiz.nuevo_modo){
+        const c = wiz.cliente_nuevo||{};
+        if(!c.razon_social || !c.cuit){ toast('Razón social y CUIT obligatorios','error'); return; }
+      }
+    }
+    if(wiz.step===3 && wiz.tipo_tramite!=='REBA_INSCRIPCION' && wiz.tipo_tramite!=='REBA_RENOVACION'){
+      if(!wiz.denominacion || !wiz.direccion_comercial || !wiz.rubro_id){
+        toast('Denominación, dirección y rubro son obligatorios','error'); return;
+      }
+    }
+  }
+  wiz.step = Math.max(1, target);
+  render();
+}
+window.wizStep = wizStep;
+
+function crearExpediente(){
+  let clienteId = wiz.cliente_id;
+  if(wiz.nuevo_modo && wiz.cliente_nuevo){
+    const nuevo = {id:uid(), ...wiz.cliente_nuevo};
+    STORE.clientes.push(nuevo);
+    clienteId = nuevo.id;
+  }
+  const exp = {
+    id: uid(),
+    cliente_id: clienteId,
+    rubro_id: wiz.rubro_id,
+    tipo_tramite: wiz.tipo_tramite,
+    denominacion: wiz.denominacion,
+    direccion_comercial: wiz.direccion_comercial,
+    partida_inmobiliaria: wiz.partida_inmobiliaria,
+    superficie_m2: wiz.superficie_m2 ? Number(wiz.superficie_m2) : null,
+    factor_ocupacion: wiz.factor_ocupacion ? Number(wiz.factor_ocupacion) : null,
+    numero_municipal: wiz.numero_municipal,
+    categoria_10799: wiz.categoria_10799 || null,
+    tiene_gas: !!wiz.tiene_gas,
+    tiene_agua_caliente: !!wiz.tiene_agua_caliente,
+    tiene_mesas_via_publica: !!wiz.tiene_mesas_via_publica,
+    planos_desactualizados: !!wiz.planos_desactualizados,
+    estado: 'PRE_ENCUADRE',
+    fecha_inicio: new Date().toISOString().slice(0,10),
+    notas: wiz.notas,
+    items: [],
+    portal_token: null,
+    /* Actividad comercial */
+    memoria_descriptiva: '',
+    actividades_naiib: [],
+    /* Trazabilidad de cambios de rubro */
+    historial_rubros: [{
+      rubro_id: wiz.rubro_id,
+      fecha: new Date().toISOString().slice(0,10),
+      motivo: 'Alta del expediente',
+      usuario: 'Gestor',
+    }],
+  };
+  exp.items = generarItems(exp);
+  STORE.expedientes.unshift(exp);
+  guardarStore(STORE);
+  toast('Expediente creado','ok');
+  wiz = null;
+  navTo('expedientes/'+exp.id);
+}
+window.crearExpediente = crearExpediente;
+
+function cancelarWizard(){
+  if(confirm('¿Descartar este wizard?')){ wiz = null; navTo('expedientes'); }
+}
+window.cancelarWizard = cancelarWizard;
+
+function renderExpediente(id, sub){
+  const e = STORE.expedientes.find(x=>x.id===id);
+  if(!e) return '<div class="empty"><div class="icon">❌</div><h3>Expediente no encontrado</h3><button class="btn btn-primary" onclick="navTo(\'expedientes\')">Ver listado</button></div>';
+  const cli = STORE.clientes.find(c=>c.id===e.cliente_id);
+  const rub = findRubro(e.rubro_id);
+  const est = ESTADOS[e.estado] || ESTADOS.PRE_ENCUADRE;
+  const tab = sub || 'resumen';
+  const pct = progresoPct(e);
+
+  return `
+  <div class="page-head">
+    <div>
+      <div class="row gap-sm" style="margin-bottom:6px"><span class="estado ${est.clase}">${est.label}</span> <span class="pill">${TIPOS_TRAMITE[e.tipo_tramite]||'—'}</span></div>
+      <h1>${escapeHtml(e.denominacion||'(sin denominación)')}</h1>
+      <div class="sub">${escapeHtml(cli?.razon_social||'—')} · ${escapeHtml(rub?.nombre || TIPOS_TRAMITE[e.tipo_tramite] || '—')}</div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-ghost" onclick="navTo('expedientes')">← Volver</button>
+      <button class="btn btn-ghost" onclick="confCambiarRubro('${e.id}')">🔁 Cambiar rubro</button>
+      ${e.estado!=='ARCHIVADO' ? `<button class="btn btn-ghost" onclick="confArchivar('${e.id}')">📦 Archivar</button>` : `<button class="btn btn-ghost" onclick="desarchivar('${e.id}')">📤 Desarchivar</button>`}
+      <button class="btn btn-danger" onclick="confBorrar('${e.id}')">🗑️ Borrar</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab ${tab==='resumen'?'active':''}" onclick="navTo('expedientes/${e.id}/resumen')">Resumen</div>
+    <div class="tab ${tab==='actividad'?'active':''}" onclick="navTo('expedientes/${e.id}/actividad')">Actividad comercial</div>
+    <div class="tab ${tab==='checklist'?'active':''}" onclick="navTo('expedientes/${e.id}/checklist')">Checklist · ${pct}%</div>
+    <div class="tab ${tab==='portal'?'active':''}" onclick="navTo('expedientes/${e.id}/portal')">Portal del cliente</div>
+    <div class="tab ${tab==='pdfs'?'active':''}" onclick="navTo('expedientes/${e.id}/pdfs')">Documentos PDF</div>
+  </div>
+
+  <div id="ficha-tab">${
+    tab==='checklist'  ? renderTabChecklist(e) :
+    tab==='portal'     ? renderTabPortal(e) :
+    tab==='pdfs'       ? renderTabPdfs(e) :
+    tab==='actividad'  ? renderTabActividad(e) :
+                         renderTabResumen(e)
+  }</div>
+  `;
+}
+
+function renderTabResumen(e){
+  const cli = STORE.clientes.find(c=>c.id===e.cliente_id);
+  const rub = findRubro(e.rubro_id);
+  const pct = progresoPct(e);
+  return `
+  <div class="card-grid">
+    <div class="card">
+      <h4 style="font-size:11px;text-transform:uppercase;color:var(--verde);margin-bottom:14px;letter-spacing:.06em">Datos del trámite</h4>
+      <div class="col gap-sm small">
+        <div><b>Tipo:</b> ${TIPOS_TRAMITE[e.tipo_tramite]||'—'}</div>
+        <div><b>Rubro:</b> ${escapeHtml(rub?.nombre||'—')}</div>
+        <div><b>Categoría 10799:</b> ${e.categoria_10799?'Cat. '+e.categoria_10799:'No aplica'}</div>
+        <div><b>Inicio:</b> ${fmtDate(e.fecha_inicio)}</div>
+        <div><b>N° municipal:</b> ${escapeHtml(e.numero_municipal||'—')}</div>
+        <div><b>Partida:</b> ${escapeHtml(e.partida_inmobiliaria||'—')}</div>
+      </div>
+    </div>
+    <div class="card">
+      <h4 style="font-size:11px;text-transform:uppercase;color:var(--verde);margin-bottom:14px;letter-spacing:.06em">Local</h4>
+      <div class="col gap-sm small">
+        <div><b>Denominación:</b> ${escapeHtml(e.denominacion||'—')}</div>
+        <div><b>Dirección:</b> ${escapeHtml(e.direccion_comercial||'—')}</div>
+        <div><b>Superficie:</b> ${e.superficie_m2?e.superficie_m2+' m²':'—'}</div>
+        <div><b>Factor ocupación:</b> ${e.factor_ocupacion?e.factor_ocupacion+' personas':'—'}</div>
+      </div>
+    </div>
+    <div class="card">
+      <h4 style="font-size:11px;text-transform:uppercase;color:var(--verde);margin-bottom:14px;letter-spacing:.06em">Titular del comercio</h4>
+      ${(()=>{ const t=getTitular(e); return `
+      <div class="col gap-sm small">
+        <div><b>Razón social:</b> ${escapeHtml(t.razon_social||'—')}</div>
+        <div><b>Tipo:</b> ${t.persona_tipo||'—'}</div>
+        <div><b>CUIT:</b> ${escapeHtml(t.cuit||'—')}</div>
+        <div><b>DNI:</b> ${escapeHtml(t.dni_titular||'—')}</div>
+        <div><b>Email:</b> ${escapeHtml(t.email||'—')}</div>
+        <div><b>Tel:</b> ${escapeHtml(t.telefono||'—')}</div>
+        ${t.es_mismo_cliente?'<div class="muted small mt-md" style="font-style:italic">Mismo que el cliente / representante</div>':`<div class="muted small mt-md" style="font-style:italic">Distinto al representante: <b>${escapeHtml(cli?.razon_social||'—')}</b></div>`}
+      </div>`;})()}
+    </div>
+    <div class="card">
+      <h4 style="font-size:11px;text-transform:uppercase;color:var(--verde);margin-bottom:14px;letter-spacing:.06em">Cliente / Representante (firmante)</h4>
+      <div class="col gap-sm small">
+        <div><b>Nombre:</b> ${escapeHtml(cli?.razon_social||'—')}</div>
+        <div><b>Tipo:</b> ${cli?.persona_tipo||'—'}</div>
+        <div><b>CUIT:</b> ${escapeHtml(cli?.cuit||'—')}</div>
+        <div><b>Email:</b> ${escapeHtml(cli?.email||'—')}</div>
+        <div><b>Tel:</b> ${escapeHtml(cli?.telefono||'—')}</div>
+        ${cli?.vinculo ? `<div><b>Vínculo:</b> ${({titular:'Es el titular',apoderado:'Apoderado / Representante legal',familiar:'Familiar',gerente:'Gerente',contador:'Contador',otro:'Otro'})[cli.vinculo]||cli.vinculo}</div>` : ''}
+      </div>
+    </div>
+    <div class="card featured">
+      <h4 style="font-size:11px;text-transform:uppercase;color:var(--verde);margin-bottom:14px;letter-spacing:.06em">Progreso</h4>
+      <div class="progress-row"><span class="muted small">Requisitos obligatorios</span><span class="pct">${pct}%</span></div>
+      <div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div>
+      <div class="muted small mt-md">${(e.items||[]).filter(i=>i.checked&&i.obligatorio).length} de ${(e.items||[]).filter(i=>i.obligatorio).length} obligatorios completos</div>
+    </div>
+  </div>
+
+  <div class="card mt-lg">
+    <h4 style="font-size:11px;text-transform:uppercase;color:var(--verde);margin-bottom:14px;letter-spacing:.06em">Cambiar estado</h4>
+    <div class="row wrap gap-sm">
+      ${Object.entries(ESTADOS).filter(([k])=>k!=='ARCHIVADO').map(([k,v])=>`
+        <button class="btn btn-sm ${e.estado===k?'btn-primary':'btn-ghost'}" onclick="cambiarEstado('${e.id}','${k}')">${v.label}</button>
+      `).join('')}
+    </div>
+  </div>
+
+  ${e.notas ? `
+  <div class="card mt-lg">
+    <h4 style="font-size:11px;text-transform:uppercase;color:var(--verde);margin-bottom:10px;letter-spacing:.06em">Notas internas</h4>
+    <p style="white-space:pre-wrap;font-size:14px;color:var(--texto)">${escapeHtml(e.notas)}</p>
+  </div>` : ''}
+  `;
+}
+
+function cambiarEstado(id, k){
+  const e = STORE.expedientes.find(x=>x.id===id); if(!e) return;
+  e.estado = k; guardarStore(STORE); toast('Estado actualizado','ok'); render();
+}
+window.cambiarEstado = cambiarEstado;
+
+function renderTabChecklist(e){
+  const items = e.items || [];
+  const grupos = [...new Set(items.map(i=>i.grupo))];
+  return grupos.map(g=>{
+    const gItems = items.filter(i=>i.grupo===g);
+    return `
+    <div class="checklist-group">
+      <h3>${GRUPOS[g]||g} <span class="muted" style="font-weight:400;text-transform:none;font-size:11px;margin-left:6px">${gItems.filter(i=>i.checked).length}/${gItems.length}</span></h3>
+      ${gItems.map(it=>{
+        const itemId = `${e.id}__${it.codigo}`;
+        return `
+        <div class="check-item ${it.checked?'done':''}" id="ci-${itemId}">
+          <div class="head">
+            <input type="checkbox" ${it.checked?'checked':''} onchange="toggleItem('${e.id}','${it.codigo}',this.checked)">
+            <div class="body">
+              <div class="label">${escapeHtml(it.label)} ${!it.obligatorio?'<span class="opcional">opcional</span>':''}</div>
+              ${it.help?`<div class="help">${escapeHtml(it.help)}</div>`:''}
+              ${it.foja||it.vencimiento||it.observacion?`<div class="muted small mt-md">${it.foja?'<b>Foja:</b> '+escapeHtml(it.foja):''} ${it.vencimiento?'· <b>Vence:</b> '+fmtDate(it.vencimiento):''} ${it.observacion?'· '+escapeHtml(it.observacion):''}</div>`:''}
+            </div>
+            <button class="expand-btn" onclick="toggleExpand('${itemId}')">+ detalles</button>
+          </div>
+          <div class="extras">
+            <div><label>Foja</label><input value="${escapeHtml(it.foja)}" oninput="updItem('${e.id}','${it.codigo}','foja',this.value)"></div>
+            ${it.vence?`<div><label>Vencimiento</label><input type="date" value="${it.vencimiento||''}" oninput="updItem('${e.id}','${it.codigo}','vencimiento',this.value)"></div>`:'<div></div>'}
+            <div><label>Observación</label><input value="${escapeHtml(it.observacion)}" oninput="updItem('${e.id}','${it.codigo}','observacion',this.value)"></div>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+    `;
+  }).join('');
+}
+
+function toggleItem(expId, codigo, val){
+  const e = STORE.expedientes.find(x=>x.id===expId); if(!e) return;
+  const it = e.items.find(i=>i.codigo===codigo); if(!it) return;
+  it.checked = val; guardarStore(STORE);
+  const el = document.getElementById(`ci-${expId}__${codigo}`);
+  if(el) el.classList.toggle('done', val);
+}
+window.toggleItem = toggleItem;
+function toggleExpand(itemId){ document.getElementById(`ci-${itemId}`)?.classList.toggle('expanded'); }
+window.toggleExpand = toggleExpand;
+function updItem(expId, codigo, k, v){
+  const e = STORE.expedientes.find(x=>x.id===expId); if(!e) return;
+  const it = e.items.find(i=>i.codigo===codigo); if(!it) return;
+  it[k]=v; guardarStore(STORE);
+}
+window.updItem = updItem;
+
+function renderTabPortal(e){
+  const url = location.origin + location.pathname + '#/portal/' + (e.portal_token||'');
+  return `
+  <div class="card">
+    <h3 style="margin-bottom:6px">Portal del cliente</h3>
+    <p class="muted small mb-md">Generá un link único y compartilo por WhatsApp. El cliente puede tildar sus propios requisitos sin entrar a tu sistema.</p>
+
+    ${e.portal_token ? `
+      <div class="form-group">
+        <label class="form-label">Link público</label>
+        <div class="row gap-sm">
+          <input class="form-input font-mono" readonly value="${url}" id="urlPortal">
+          <button class="btn btn-ghost btn-sm" onclick="copiarPortal()">📋 Copiar</button>
+          <a class="btn btn-ghost btn-sm" href="${url}" target="_blank">↗ Abrir</a>
+        </div>
+      </div>
+      <div class="row gap-sm mt-md">
+        <button class="btn btn-danger btn-sm" onclick="revocarPortal('${e.id}')">Revocar link</button>
+        <a class="btn btn-primary btn-sm" target="_blank" href="https://wa.me/?text=${encodeURIComponent('Hola! Te paso el link para que vayas marcando los requisitos: '+url)}">📲 Enviar por WhatsApp</a>
+      </div>
+    ` : `
+      <button class="btn btn-primary" onclick="generarPortal('${e.id}')">🔗 Generar link único</button>
+    `}
+  </div>
+  `;
+}
+
+function generarPortal(id){
+  const e = STORE.expedientes.find(x=>x.id===id); if(!e) return;
+  e.portal_token = uid()+uid(); guardarStore(STORE); toast('Portal generado','ok'); render();
+}
+window.generarPortal = generarPortal;
+
+function revocarPortal(id){
+  const e = STORE.expedientes.find(x=>x.id===id); if(!e) return;
+  e.portal_token = null; guardarStore(STORE); toast('Portal revocado','error'); render();
+}
+window.revocarPortal = revocarPortal;
+
+function copiarPortal(){
+  const inp = document.getElementById('urlPortal'); inp.select();
+  document.execCommand('copy'); toast('Link copiado','ok');
+}
+window.copiarPortal = copiarPortal;
+
+function renderTabPdfs(e){
+  const tipos = [
+    {k:'completo',  label:'📦 Documentación COMPLETA',  desc:'Todo el expediente en un PDF: datos, condiciones, checklist agrupado y anexos.'},
+    {k:'ddjj',      label:'DDJJ del comercio',          desc:'Declaración jurada inicial — ART. 7 de la Ord. 7800.'},
+    {k:'anexo1',    label:'Anexo 1 — Datos generales',  desc:'Datos del titular y del local.'},
+    {k:'anexo2',    label:'Anexo 2 — Antisiniestral',   desc:'Estado de los requisitos antisiniestrales.'},
+    {k:'anexo3',    label:'Anexo 3 — Ord. 10799',       desc:'Plan de evacuación y permanencia público.'},
+    {k:'bomberos',  label:'Carpeta Bomberos',           desc:'Asesoramiento técnico en prevención de incendios.'},
+    {k:'reba',      label:'Carpeta ReBA',               desc:'Inscripción / renovación al Registro de Beneficios.'},
+    {k:'reg137',    label:'Carpeta Plan Regularización',desc:'Resolución 137/2025 — planos antecedentes + actualizado.'},
+    {k:'cierre',    label:'Comprobante de cierre',      desc:'Para baja de habilitación.'},
+  ];
+  return `
+  <div class="card mb-md" style="border-top:4px solid var(--verde);background:linear-gradient(135deg,#fff,var(--mint))">
+    <div class="row" style="justify-content:space-between;align-items:flex-start;gap:14px">
+      <div style="flex:1">
+        <h3 style="margin-bottom:4px">📄 Convenio de gestión</h3>
+        <p class="muted small" style="margin-bottom:0">Generá el contrato profesional para que firme el cliente. Plantilla automática según el tipo de actividad (Generales · Complementarios · Ord. 10.799), con tus datos como Gestor y los del cliente ya cargados.</p>
+      </div>
+      <button class="btn btn-primary" onclick="modalConvenio('${e.id}')">Configurar y generar →</button>
+    </div>
+  </div>
+
+  <h3 style="font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde);margin:20px 0 10px;font-family:'Poppins'">Documentos del expediente</h3>
+  <div class="card-grid">
+    ${tipos.map(t=>`
+      <div class="card" style="cursor:pointer" onclick="generarPdf('${e.id}','${t.k}')">
+        <div class="row" style="justify-content:space-between"><div><h4 style="font-size:14px;color:var(--navy);margin-bottom:4px">${t.label}</h4><div class="muted small">${t.desc}</div></div><div style="color:var(--verde);font-size:20px">→</div></div>
+      </div>
+    `).join('')}
+  </div>
+  `;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONVENIO DE GESTIÓN — Configuración + PDF
+   ═══════════════════════════════════════════════════════════ */
+function modalConvenio(expId){
+  const e = STORE.expedientes.find(x=>x.id===expId); if(!e) return;
+  if(!e.convenio) e.convenio = {
+    tipo:'generales', honorarios:'', sitio_web:'ambos',
+    items_extras:'', responsable_complementarios:'gestor',
+    fecha_contratacion: new Date().toISOString().slice(0,10),
+  };
+  const c = e.convenio;
+  modal(`
+    <h3>📄 Configurar convenio de gestión</h3>
+    <p class="muted small mb-md">Completá los datos para generar el PDF para firma.</p>
+
+    <div class="form-group">
+      <label class="form-label">Tipo de convenio</label>
+      <label class="form-check ${c.tipo==='generales'?'checked':''}">
+        <input type="radio" name="cv_tipo" value="generales" ${c.tipo==='generales'?'checked':''}>
+        <div><div class="label-text">Actividades que cumplen con requisitos generales</div>
+        <div class="label-help">Comercios estándar — sin actividad especial ni permanencia público.</div></div>
+      </label>
+      <label class="form-check ${c.tipo==='complementarios'?'checked':''}">
+        <input type="radio" name="cv_tipo" value="complementarios" ${c.tipo==='complementarios'?'checked':''}>
+        <div><div class="label-text">Actividades que cumplen con requisitos complementarios</div>
+        <div class="label-help">El rubro tiene documentación específica (farmacia, gimnasio, hotel, etc.).</div></div>
+      </label>
+      <label class="form-check ${c.tipo==='ord10799'?'checked':''}">
+        <input type="radio" name="cv_tipo" value="ord10799" ${c.tipo==='ord10799'?'checked':''}>
+        <div><div class="label-text">Ordenanza 10.799 — Permanencia de público</div>
+        <div class="label-help">Bares, restaurantes, salones, gimnasios con público, etc. Sin mención de plazos (trámite extenso).</div></div>
+      </label>
+    </div>
+
+    <div class="form-group" id="cv_complementarios_box" style="display:${c.tipo==='complementarios'?'block':'none'}">
+      <label class="form-label">Documentación complementaria — ¿quién la presenta?</label>
+      <select class="form-select" id="cv_responsable">
+        <option value="gestor"  ${c.responsable_complementarios==='gestor'?'selected':''}>El Gestor (incluido en honorarios)</option>
+        <option value="cliente" ${c.responsable_complementarios==='cliente'?'selected':''}>El Cliente (a su cargo y costo)</option>
+        <option value="mixto"   ${c.responsable_complementarios==='mixto'?'selected':''}>Mixto — coordinar con el cliente caso por caso</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Honorarios totales</label>
+        <input class="form-input" id="cv_honorarios" placeholder="Ej. $850.000" value="${escapeHtml(c.honorarios||'')}">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Fecha de contratación</label>
+        <input class="form-input" type="date" id="cv_fecha" value="${c.fecha_contratacion||''}">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Sitio web a mostrar en el footer</label>
+      <select class="form-select" id="cv_sitio">
+        <option value="gestor"   ${c.sitio_web==='gestor'?'selected':''}>www.gestorlaplata.com</option>
+        <option value="habilita" ${c.sitio_web==='habilita'?'selected':''}>www.habilitacioneslaplata.com</option>
+        <option value="ambos"    ${c.sitio_web==='ambos'?'selected':''}>Ambos sitios</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Ítems extra para "La gestión NO incluye" (opcional)</label>
+      <textarea class="form-textarea" id="cv_extras" placeholder="Una línea por ítem. Se agregan al listado estándar.">${escapeHtml(c.items_extras||'')}</textarea>
+      <div class="form-help">Cualquier ítem extra que quieras dejar aclarado en este convenio puntual.</div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="cerrarModal({target:{id:'modal'}})">Cancelar</button>
+      <button class="btn btn-primary" onclick="generarConvenioPdf('${expId}')">📄 Generar PDF</button>
+    </div>
+  `);
+  // Listener para mostrar/ocultar el bloque de complementarios
+  document.querySelectorAll('input[name=cv_tipo]').forEach(r=>{
+    r.addEventListener('change', ()=>{
+      document.getElementById('cv_complementarios_box').style.display = r.value==='complementarios' && r.checked ? 'block' : (document.querySelector('input[name=cv_tipo]:checked').value==='complementarios'?'block':'none');
+      document.querySelectorAll('input[name=cv_tipo]').forEach(rr=>rr.parentElement.classList.toggle('checked', rr.checked));
+    });
+  });
+}
+window.modalConvenio = modalConvenio;
+
+async function generarConvenioPdf(expId){
+  const e = STORE.expedientes.find(x=>x.id===expId); if(!e) return;
+  // capturar config del modal
+  const tipo = document.querySelector('input[name=cv_tipo]:checked')?.value || 'generales';
+  const honorarios = document.getElementById('cv_honorarios').value.trim();
+  const fecha = document.getElementById('cv_fecha').value;
+  const sitio = document.getElementById('cv_sitio').value;
+  const extras = document.getElementById('cv_extras').value.trim();
+  const responsable = document.getElementById('cv_responsable')?.value || 'gestor';
+  e.convenio = {tipo, honorarios, sitio_web:sitio, items_extras:extras, responsable_complementarios:responsable, fecha_contratacion:fecha};
+  guardarStore(STORE);
+
+  toast('Generando convenio...');
+  if(!window.PDFLib){ toast('Error: pdf-lib no cargó','error'); return; }
+  const {PDFDocument, StandardFonts, rgb} = window.PDFLib;
+  const cli = STORE.clientes.find(c=>c.id===e.cliente_id) || {};
+  const rub = findRubro(e.rubro_id) || {};
+  const pdf = await PDFDocument.create();
+  const helv = await pdf.embedFont(StandardFonts.Helvetica);
+  const helvBold = await pdf.embedFont(StandardFonts.HelveticaBold);
+  const helvItal = await pdf.embedFont(StandardFonts.HelveticaOblique);
+
+  const navy = rgb(29/255,53/255,87/255);
+  const verde = rgb(26/255,122/255,74/255);
+  const verdeAcento = rgb(46/255,173/255,107/255);
+  const muted = rgb(0.45,0.45,0.45);
+  const ink = rgb(0.13,0.15,0.16);
+  const rule = rgb(0.85,0.88,0.85);
+
+  let page = pdf.addPage([595.28, 841.89]);
+  const W = page.getWidth(), H = page.getHeight(), M = 56;
+  let y = H - 50;
+
+  function newPage(){
+    page = pdf.addPage([595.28, 841.89]);
+    // header chico en páginas internas
+    page.drawText('Habilitaciones La Plata · Convenio de gestión', {x:M, y:H-30, size:8, font:helvItal, color:muted});
+    page.drawLine({start:{x:M,y:H-36}, end:{x:W-M,y:H-36}, thickness:.3, color:rule});
+    return H - 60;
+  }
+  function checkRoom(min){ if(y < (min + 90)) y = newPage(); }
+  function wrap(text, font, size, maxWidth){
+    const words = String(text||'').split(/\s+/);
+    const lines = []; let line = '';
+    for(const w of words){
+      const test = line ? line+' '+w : w;
+      if(font.widthOfTextAtSize(test, size) > maxWidth && line){
+        lines.push(line); line = w;
+      } else line = test;
+    }
+    if(line) lines.push(line);
+    return lines;
+  }
+  function drawPara(text, opts={}){
+    const {size=10, font=helv, color=ink, leading=13, indent=0, maxWidth=W-2*M-indent} = opts;
+    const lines = wrap(text, font, size, maxWidth);
+    for(const l of lines){
+      checkRoom(leading);
+      page.drawText(l, {x:M+indent, y, size, font, color});
+      y -= leading;
+    }
+  }
+  function drawHeading(text, size=12){
+    checkRoom(size+8);
+    page.drawText(text, {x:M, y, size, font:helvBold, color:navy});
+    y -= size+4;
+    page.drawLine({start:{x:M,y}, end:{x:M+40,y}, thickness:1.5, color:verde});
+    y -= 10;
+  }
+  function drawBullet(text, opts={}){
+    const {size=10, leading=13} = opts;
+    const lines = wrap(text, helv, size, W-2*M-14);
+    for(let i=0;i<lines.length;i++){
+      checkRoom(leading);
+      if(i===0) page.drawText('•', {x:M, y, size, font:helvBold, color:verde});
+      page.drawText(lines[i], {x:M+14, y, size, font:helv, color:ink});
+      y -= leading;
+    }
+  }
+  function drawKV(k, v){
+    checkRoom(15);
+    page.drawText(k, {x:M, y, size:9, font:helvBold, color:muted});
+    const kw = helvBold.widthOfTextAtSize(k, 9);
+    const lines = wrap(v||'_______________________________', helv, 10, W-2*M-kw-10);
+    page.drawText(lines[0]||'', {x:M+kw+8, y, size:10, font:helv, color:ink});
+    y -= 14;
+    for(let i=1;i<lines.length;i++){
+      checkRoom(13);
+      page.drawText(lines[i], {x:M, y, size:10, font:helv, color:ink});
+      y -= 13;
+    }
+  }
+  function space(n=8){ y -= n; }
+
+  /* ─── HEADER ─────────────────────────────────────────── */
+  page.drawRectangle({x:0, y:H-44, width:W, height:44, color:navy});
+  page.drawText('HABILITACIONES LA PLATA', {x:M, y:H-26, size:14, font:helvBold, color:rgb(1,1,1)});
+  page.drawText('By Gestor La Plata', {x:M, y:H-39, size:8.5, font:helvItal, color:verdeAcento});
+
+  const subtPorTipo = {
+    generales:'Actividades que cumplen con requisitos generales',
+    complementarios:'Actividades que cumplen con requisitos complementarios',
+    ord10799:'Ordenanza 10.799 — Permanencia de público',
+  };
+  page.drawText(subtPorTipo[tipo], {x:M, y:H-58, size:9, font:helvBold, color:muted});
+
+  y = H - 90;
+  page.drawText('CONVENIO DE GESTIÓN', {x:M, y, size:22, font:helvBold, color:navy});
+  y -= 28;
+
+  /* ─── DATOS DE LAS PARTES ─────────────────────────── */
+  drawHeading('Datos de las partes', 11);
+  page.drawText('EL GESTOR', {x:M, y, size:9, font:helvBold, color:verde});
+  y -= 13;
+  drawPara('Santiago A. Ippolito — Gestor Administrativo y Judicial — Matrícula 10001');
+  drawPara('Calle 49 N° 1295, La Plata, Provincia de Buenos Aires.');
+  space(6);
+
+  const titConv = getTitular(e);
+  page.drawText('EL CLIENTE / REPRESENTANTE (firmante)', {x:M, y, size:9, font:helvBold, color:verde});
+  y -= 13;
+  drawKV('Nombre / Razón Social: ', cli.razon_social||'');
+  drawKV('CUIT / DNI: ', cli.cuit||cli.dni_titular||'');
+  drawKV('Domicilio constitutivo: ', cli.direccion||'');
+  drawKV('Teléfono: ', cli.telefono||'');
+  drawKV('Email: ', cli.email||'');
+  if(cli.vinculo) drawKV('Vínculo con el titular: ', ({titular:'Es el titular',apoderado:'Apoderado / Representante legal',familiar:'Familiar del titular',gerente:'Gerente / Empleado',contador:'Contador',otro:'Otro'})[cli.vinculo]||'');
+  space(8);
+
+  if(!titConv.es_mismo_cliente){
+    page.drawText('EL TITULAR DEL COMERCIO (a cuyo nombre se gestiona la habilitación)', {x:M, y, size:9, font:helvBold, color:verde});
+    y -= 13;
+    drawKV('Nombre / Razón Social: ', titConv.razon_social||'');
+    drawKV('CUIT / DNI: ', titConv.cuit||titConv.dni_titular||'');
+    drawKV('Domicilio fiscal: ', titConv.direccion||'');
+    drawKV('Teléfono: ', titConv.telefono||'');
+    drawKV('Email: ', titConv.email||'');
+    space(8);
+  }
+
+  drawHeading('Datos del establecimiento', 11);
+  drawKV('Dirección del local: ', e.direccion_comercial||'');
+  drawKV('Rubro / Actividad: ', rub.nombre||'');
+  drawKV('Superficie (m²): ', e.superficie_m2?String(e.superficie_m2):'');
+  drawKV('Nombre de fantasía: ', e.denominacion||'');
+  drawKV('Categoría (I a V): ', e.categoria_10799?'Cat. '+e.categoria_10799:'No aplica');
+  drawKV('Fecha de contratación: ', fmtDate(fecha));
+  space(12);
+
+  /* ─── CLÁUSULAS ─────────────────────────────────────── */
+  drawHeading('Cláusulas', 13);
+
+  // 1. OBJETO
+  drawHeading('1. OBJETO', 10);
+  if(tipo==='ord10799'){
+    drawPara('El Gestor se compromete a realizar la gestión integral de la Habilitación Comercial del establecimiento detallado anteriormente ante la Municipalidad de La Plata, conforme a los requisitos de la Ordenanza N° 10.799 (Permanencia de Público) y normativa complementaria vigente.');
+  } else if(tipo==='complementarios'){
+    drawPara('El Gestor se compromete a realizar la gestión integral de la Habilitación Comercial del establecimiento detallado anteriormente ante la Municipalidad de La Plata, conforme a los requisitos generales y la documentación complementaria específica que el rubro requiera.');
+  } else {
+    drawPara('El Gestor se compromete a realizar la gestión integral de la Habilitación Comercial del establecimiento detallado anteriormente ante la Municipalidad de La Plata, conforme a los requisitos generales vigentes.');
+  }
+  space(8);
+
+  // 2. ETAPAS Y PLAZOS — solo en generales y complementarios (no en ord10799)
+  if(tipo!=='ord10799'){
+    drawHeading('2. ETAPAS Y PLAZOS ESTIMADOS', 10);
+    drawPara('La gestión se desarrollará en las siguientes etapas, cuyos plazos son estimativos y podrán variar según la dinámica municipal y la colaboración del cliente:');
+    space(4);
+    drawBullet('Etapa 1 — Plano certificado: dentro de los 15 días corridos desde la contratación, El Gestor gestionará la obtención del plano de obra civil actualizado y certificado por la Dirección de Obras Particulares.');
+    drawBullet('Etapa 2 — Informe CERPROSA: dentro de los 7 a 10 días hábiles posteriores a la obtención del plano, se confeccionará el informe antisiniestral a cargo de un Licenciado en Seguridad e Higiene (CERPROSA). Se opta por esta vía y no por Bomberos, dado que el trámite con el Cuerpo de Bomberos es significativamente más lento.');
+    drawBullet('Etapa 3 — Recopilación de documentación: en paralelo con las etapas anteriores, El Gestor solicitará al cliente la documentación necesaria. El plazo total de preparación del expediente no excederá los 30 días corridos desde la contratación, siempre que el cliente entregue la documentación en tiempo y forma.');
+    drawBullet('Etapa 4 — Ingreso a Municipalidad: una vez completo el expediente, se ingresará a la Dirección General de Comercio de la Municipalidad de La Plata.');
+    drawBullet('Etapa 5 — Inspección municipal: la Municipalidad designará un inspector dentro de los 15 a 25 días hábiles posteriores al ingreso. Se notificará la fecha con 2 a 3 días de anticipación, con franja horaria de 8:00 a 16:00 hs. El cliente deberá garantizar el acceso al local en dicha franja.');
+    drawBullet('Etapa 6 — Resultado de inspección: si la inspección es favorable, el certificado de habilitación se imprimirá en un plazo aproximado de 15 días. Si se requiere reinspección, el inspector dispondrá de 10 días para dejar la documentación, y luego se asignará nueva fecha de inspección.');
+    drawBullet('Etapa 7 — Entrega del certificado: una vez impreso, El Gestor retirará el certificado de habilitación (cartón) y lo entregará al cliente.');
+    space(8);
+  } else {
+    drawHeading('2. PLAZOS', 10);
+    drawPara('Los trámites bajo Ordenanza N° 10.799 son procesos extensos que pueden demandar varios meses, dependiendo de la disponibilidad de Bomberos, Obras Particulares, inspecciones radiales y cargas municipales. El Gestor se compromete a llevar adelante el trámite con la mayor diligencia profesional, manteniendo informado al cliente del avance, sin comprometer plazos rígidos que escapen al control de El Gestor.');
+    space(8);
+  }
+
+  // 3. LA GESTIÓN INCLUYE
+  const numIncluye = tipo==='ord10799' ? '2' : '3';
+  drawHeading(`${numIncluye}. LA GESTIÓN INCLUYE`, 10);
+  drawBullet('Solicitud y obtención del plano de obra civil certificado y actualizado.');
+  drawBullet('Confección del informe antisiniestral CERPROSA por Licenciado en Seguridad e Higiene.');
+  if(tipo==='ord10799'){
+    drawBullet('Trámite completo del Informe de Asesoramiento + Final de Obra ante Cuerpo de Bomberos.');
+    drawBullet('Confección del Plan y Plano de Evacuación.');
+    drawBullet('Capacitación del personal en uso de extintores manuales (Higiene y Seguridad matriculado).');
+  }
+  drawBullet('Armado, revisión y presentación del expediente completo ante la Municipalidad.');
+  drawBullet('Seguimiento del trámite hasta la obtención del certificado de habilitación.');
+  drawBullet('Gestión de observaciones municipales.');
+  drawBullet('Libro de Actas (oficio, 200 fojas).');
+  if(tipo!=='ord10799'){
+    drawBullet('Plan de evacuación.');
+    drawBullet('Capacitación en uso de extintores.');
+  }
+  drawBullet('Asesoramiento integral durante todo el proceso.');
+  drawBullet('Tasas y timbrados municipales.');
+  if(tipo==='complementarios' && responsable==='gestor'){
+    drawBullet('Tramitación de la documentación complementaria específica que requiera el rubro.');
+  } else if(tipo==='complementarios' && responsable==='mixto'){
+    drawBullet('Asesoramiento sobre la documentación complementaria. La presentación específica se coordinará caso por caso entre las partes.');
+  }
+  space(8);
+
+  // 4. NO INCLUYE
+  const numNoInc = tipo==='ord10799' ? '3' : '4';
+  drawHeading(`${numNoInc}. LA GESTIÓN NO INCLUYE — A CARGO DEL CLIENTE`, 10);
+  drawPara('Los siguientes ítems no forman parte de la gestión y deberán ser resueltos por el cliente por sus propios medios, en caso de que la Municipalidad los requiera:');
+  space(4);
+  drawBullet('Certificado de aptitud de instalación eléctrica — a gestionar con electricista matriculado.');
+  drawBullet('Certificado de aptitud de instalación de gas — a gestionar con gasista matriculado, Formulario 3.5 de Camuzzi o informe equivalente.');
+  if(tipo==='ord10799'){
+    drawBullet('Seguros de Responsabilidad Civil. Si el cliente lo desea, El Gestor puede asesorar y/o recomendar un contacto.');
+    drawBullet('Seguro de Emergencias Médicas. Si el cliente lo desea, El Gestor puede asesorar y/o recomendar un contacto.');
+    drawBullet('Botiquín de primeros auxilios.');
+    drawBullet('Constancia de limpieza de tanques de agua. Si el cliente lo desea, El Gestor puede asesorar y/o recomendar un contacto.');
+    drawBullet('Constancia de desratización. Si el cliente lo desea, El Gestor puede asesorar y/o recomendar un contacto.');
+    drawBullet('Retiro de residuos especiales.');
+    drawBullet('Constancia de mantenimiento de tubos de CO2 (empresa proveedora o prueba de tubo).');
+  }
+  if(tipo==='complementarios' && responsable==='cliente'){
+    drawBullet('Toda la documentación complementaria específica del rubro será gestionada por el cliente y entregada a El Gestor para su inclusión en el expediente.');
+  }
+  // Items extras del usuario
+  if(extras){
+    for(const linea of extras.split('\n').map(l=>l.trim()).filter(Boolean)){
+      drawBullet(linea);
+    }
+  }
+  // 3 líneas en blanco para escribir a mano
+  for(let i=0;i<3;i++){
+    checkRoom(15);
+    page.drawText('•', {x:M, y, size:10, font:helvBold, color:rule});
+    page.drawLine({start:{x:M+14,y:y-2}, end:{x:W-M,y:y-2}, thickness:.3, color:rule});
+    y -= 14;
+  }
+  space(8);
+
+  // 5. DOCUMENTACIÓN REQUERIDA AL CLIENTE
+  const numDoc = tipo==='ord10799' ? '4' : '5';
+  drawHeading(`${numDoc}. DOCUMENTACIÓN REQUERIDA AL CLIENTE`, 10);
+  drawPara('Para poder iniciar y avanzar con la gestión, el cliente deberá proveer la siguiente documentación:');
+  space(4);
+  drawBullet('DNI del titular (frente y dorso) — foto o copia.');
+  drawBullet('Foto del frente del comercio (con persianas levantadas).');
+  drawBullet('Constancia de derecho de uso del inmueble con firmas certificadas (escritura, contrato de alquiler, comodato o boleto de compra-venta con mínimo 10 años de vigencia).');
+  drawBullet('Contacto del contador del cliente, a fin de solicitarle: Constancia de inscripción en ARCA (AFIP), Formulario de libre deuda previsional 522-A y Certificado de domicilio de Ingresos Brutos (ARBA).');
+  drawBullet('En caso de persona jurídica: Estatuto o Contrato Constitutivo, Acta de designación de autoridades y última Acta de Asamblea.');
+  space(8);
+
+  // 6. PLANO DE OBRA CIVIL
+  if(tipo!=='ord10799'){
+    drawHeading('6. PLANO DE OBRA CIVIL — SITUACIONES ESPECIALES', 10);
+    drawPara('El Gestor solicitará la copia del plano actualizada y certificada por Obras Particulares. Si el plano registrado en dicha Dirección no coincide con el estado real del inmueble, será necesario que el propietario y/o la inmobiliaria contraten a un Arquitecto o Maestro Mayor de Obras para confeccionar un nuevo plano actualizado con firma del profesional y del propietario. En tal caso, se incorporará al expediente un Anexo de Declaración Jurada (modelo para propietario o inquilino según corresponda) donde se toma conocimiento de que el último plano aprobado no refleja el estado actual del local. El costo de dicho plano será a cargo del cliente.');
+    space(8);
+  }
+
+  // 7. ENTREGA DE DOCUMENTACIÓN
+  const numEnt = tipo==='ord10799' ? '5' : '7';
+  drawHeading(`${numEnt}. ENTREGA DE DOCUMENTACIÓN`, 10);
+  drawPara('El cliente se compromete a entregar toda la documentación solicitada en tiempo y forma. Por más que el cliente haya abonado la totalidad del servicio, recién una vez que se entregue la totalidad de la documentación requerida se podrá avanzar con la gestión. ' + (tipo!=='ord10799' ? 'Los plazos estimados en la Cláusula 2 comenzarán a correr una vez recibida la documentación completa.' : ''));
+  space(8);
+
+  // 8. HONORARIOS
+  const numHon = tipo==='ord10799' ? '6' : '8';
+  drawHeading(`${numHon}. HONORARIOS Y FORMAS DE PAGO`, 10);
+  drawPara(`Monto total de la gestión: ${honorarios||'_______________________________'}`);
+  space(4);
+  drawBullet('Opción A — En 2 pagos: 50% al momento de contratar la gestión y 50% restante a los 30 días de contratado el servicio.');
+  drawBullet('Opción B — Pago único: si el cliente abona la totalidad del servicio al momento de la contratación, tendrá una bonificación del 15%.');
+  space(8);
+
+  // 9. RESCISIÓN
+  const numRes = tipo==='ord10799' ? '7' : '9';
+  drawHeading(`${numRes}. RESCISIÓN Y DESISTIMIENTO`, 10);
+  drawPara('Si el cliente desiste de la gestión una vez iniciada, la seña abonada (50% inicial) no será reembolsable. Asimismo, si al momento del desistimiento El Gestor ya hubiera abonado servicios de terceros (plano certificado, informe CERPROSA, Bomberos u otros), dichos informes y documentación no serán entregados al cliente hasta tanto se cancele la totalidad de los montos adeudados.');
+  space(8);
+
+  // 10. OBLIGACIONES DEL GESTOR
+  const numOG = tipo==='ord10799' ? '8' : '10';
+  drawHeading(`${numOG}. OBLIGACIONES DEL GESTOR`, 10);
+  drawPara('El Gestor se compromete a: cumplir los plazos estimados siempre que las condiciones dependan de su gestión; informar al cliente sobre el estado del trámite y cualquier observación municipal; mantener la confidencialidad de la documentación recibida; y brindar asesoramiento profesional durante todo el proceso.');
+  space(8);
+
+  // 11. OBLIGACIONES DEL CLIENTE
+  const numOC = tipo==='ord10799' ? '9' : '11';
+  drawHeading(`${numOC}. OBLIGACIONES DEL CLIENTE`, 10);
+  drawPara('El cliente se compromete a: entregar la documentación requerida en tiempo y forma; informar cambios en el local, rubro o situación fiscal; garantizar el acceso al local en la fecha y franja horaria de inspección municipal; y no iniciar trámites paralelos por su cuenta ante la Municipalidad que puedan interferir con la gestión.');
+  space(8);
+
+  // 12. TRÁMITES OPCIONALES
+  const numOpt = tipo==='ord10799' ? '10' : '12';
+  drawHeading(`${numOpt}. TRÁMITES OPCIONALES — NO INCLUIDOS EN ESTE CONVENIO`, 10);
+  drawPara('Los siguientes trámites pueden iniciarse una vez obtenida la habilitación comercial y se cotizan por separado:');
+  space(4);
+  drawBullet('Licencia ReBA (Registro de Expendio de Bebidas Alcohólicas) — obligatoria para establecimientos que comercialicen bebidas alcohólicas.');
+  drawBullet('Alta en Seguridad e Higiene.');
+  drawBullet('Permiso de ocupación de vía pública (mesas y sillas en vereda) — Ordenanza N° 5795.');
+  space(8);
+
+  // 13. VIGENCIA
+  const numVig = tipo==='ord10799' ? '11' : '13';
+  drawHeading(`${numVig}. VIGENCIA`, 10);
+  if(tipo==='ord10799'){
+    drawPara('El presente convenio tendrá vigencia desde la fecha de firma y hasta la entrega del certificado de habilitación. Dada la naturaleza extensa de los trámites bajo Ord. 10.799, las partes asumen un horizonte temporal flexible y se comprometen a sostener una comunicación fluida durante todo el proceso.');
+  } else {
+    drawPara('El presente convenio tendrá vigencia desde la fecha de firma y hasta la entrega del certificado de habilitación, con un plazo máximo de 6 meses. Si por causas ajenas a El Gestor el trámite no pudiera completarse en dicho plazo, las partes podrán renegociar las condiciones.');
+  }
+  space(20);
+
+  /* ─── FIRMAS ─────────────────────────── */
+  if(y < 220) y = newPage();
+  drawHeading('Firma de las partes', 12);
+  space(20);
+  // EL GESTOR
+  page.drawLine({start:{x:M, y}, end:{x:M+200, y}, thickness:.5, color:ink});
+  page.drawLine({start:{x:W-M-200, y}, end:{x:W-M, y}, thickness:.5, color:ink});
+  y -= 14;
+  page.drawText('EL GESTOR', {x:M, y, size:9, font:helvBold, color:navy});
+  page.drawText('EL CLIENTE', {x:W-M-200, y, size:9, font:helvBold, color:navy});
+  y -= 12;
+  page.drawText('Santiago A. Ippolito', {x:M, y, size:9, font:helv, color:ink});
+  page.drawText('Firma y aclaración', {x:W-M-200, y, size:8, font:helvItal, color:muted});
+  y -= 30;
+
+  /* ─── FOOTER ─────────────────────────── */
+  // Footer en cada página al final
+  const sitios = {
+    gestor:'www.gestorlaplata.com',
+    habilita:'www.habilitacioneslaplata.com',
+    ambos:'www.gestorlaplata.com  ·  www.habilitacioneslaplata.com',
+  };
+  const totalPages = pdf.getPageCount();
+  for(let i=0;i<totalPages;i++){
+    const p = pdf.getPage(i);
+    p.drawLine({start:{x:M, y:32}, end:{x:W-M, y:32}, thickness:.3, color:rule});
+    p.drawText(`221-604-3575  ·  habilitaciones@gestorlaplata.com  ·  ${sitios[sitio]}`,
+      {x:M, y:20, size:7.5, font:helv, color:muted});
+    p.drawText(`Pág. ${i+1}/${totalPages}`, {x:W-M-32, y:20, size:7.5, font:helvItal, color:muted});
+  }
+
+  const bytes = await pdf.save();
+  const blob = new Blob([bytes], {type:'application/pdf'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `convenio-${tipo}-${(e.denominacion||'expediente').replace(/[^a-zA-Z0-9]+/g,'-')}.pdf`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+  cerrarModal({target:{id:'modal'}});
+  toast('Convenio generado','ok');
+}
+window.generarConvenioPdf = generarConvenioPdf;
+
+async function generarPdf(expId, tipo){
+  const e = STORE.expedientes.find(x=>x.id===expId); if(!e) return;
+  toast('Generando PDF...');
+  if(!window.PDFLib){ toast('Error: pdf-lib no cargó','error'); return; }
+  const {PDFDocument, StandardFonts, rgb} = window.PDFLib;
+  const cli = STORE.clientes.find(c=>c.id===e.cliente_id) || {};
+  const rub = findRubro(e.rubro_id) || {};
+  const pdf = await PDFDocument.create();
+  const helv = await pdf.embedFont(StandardFonts.Helvetica);
+  const helvBold = await pdf.embedFont(StandardFonts.HelveticaBold);
+  const helvItal = await pdf.embedFont(StandardFonts.HelveticaOblique);
+
+  const navy = rgb(29/255,53/255,87/255);
+  const verde = rgb(26/255,122/255,74/255);
+  const verdeAcento = rgb(46/255,173/255,107/255);
+  const muted = rgb(0.45,0.45,0.45);
+  const ink = rgb(0.13,0.15,0.16);
+  const rule = rgb(0.85,0.88,0.85);
+
+  const TITULOS = {
+    completo:'Documentación Completa', ddjj:'DDJJ del Comercio',
+    anexo1:'Anexo 1 — Datos Generales', anexo2:'Anexo 2 — Antisiniestral',
+    anexo3:'Anexo 3 — Ordenanza 10799', bomberos:'Carpeta Bomberos',
+    reba:'Carpeta ReBA', reg137:'Plan de Regularización · Res. 137/2025',
+    cierre:'Comprobante de Cierre',
+  };
+  const titulo = TITULOS[tipo] || 'Documento';
+
+  let page = pdf.addPage([595.28, 841.89]);
+  const W = page.getWidth(), H = page.getHeight(), M = 54;
+  let y = H - M;
+
+  function newPage(){
+    page = pdf.addPage([595.28, 841.89]);
+    page.drawText(`${titulo} — ${e.denominacion||''}`, {x:M, y:H-M+10, size:8, font:helv, color:muted});
+    return H - M - 10;
+  }
+  function checkRoom(min){ if(y < (min + 60)) y = newPage(); }
+  function drawSection(title){
+    checkRoom(40);
+    page.drawText(title.toUpperCase(), {x:M, y, size:10, font:helvBold, color:verde});
+    y -= 6;
+    page.drawLine({start:{x:M,y}, end:{x:W-M,y}, thickness:.5, color:verde});
+    y -= 16;
+  }
+  function drawKV(k,v){
+    checkRoom(20);
+    page.drawText(String(k).toUpperCase(), {x:M, y, size:8, font:helvBold, color:muted});
+    page.drawText(String(v||'—'), {x:M+150, y, size:10, font:helv, color:ink});
+    y -= 16;
+  }
+  function drawCheck(it){
+    checkRoom(20);
+    const mark = it.checked ? '[x]' : '[ ]';
+    const star = it.obligatorio ? '' : '  (opcional)';
+    let line = `${mark} ${it.label}${star}`;
+    if(it.foja) line += `  · Foja ${it.foja}`;
+    if(it.vencimiento) line += `  · Vence ${fmtDate(it.vencimiento)}`;
+    const max = 95;
+    while(line.length > max){
+      const cut = line.lastIndexOf(' ', max);
+      const idx = cut > 0 ? cut : max;
+      page.drawText(line.slice(0, idx), {x:M, y, size:9, font:helv, color:ink});
+      line = '    '+line.slice(idx).trim();
+      y -= 12; checkRoom(15);
+    }
+    page.drawText(line, {x:M, y, size:9, font:helv, color:ink});
+    y -= 12;
+    if(it.observacion){
+      page.drawText('     '+it.observacion, {x:M, y, size:8, font:helvItal, color:muted});
+      y -= 11;
+    }
+  }
+
+  page.drawRectangle({x:0, y:H-40, width:W, height:40, color:navy});
+  page.drawText('HABILITACIONES LA PLATA', {x:M, y:H-25, size:11, font:helvBold, color:rgb(1,1,1)});
+  page.drawText('By Gestor La Plata', {x:M+170, y:H-25, size:9, font:helvItal, color:verdeAcento});
+  page.drawText(`Generado ${new Date().toLocaleDateString('es-AR')}`, {x:W-M-130, y:H-25, size:8, font:helv, color:rgb(1,1,1)});
+
+  y = H - 70;
+  page.drawText(titulo, {x:M, y, size:22, font:helvBold, color:navy});
+  y -= 22;
+  page.drawText(`Expediente: ${e.denominacion||'(sin denominación)'} · ${e.numero_municipal?'N° '+e.numero_municipal:'sin número'}`, {x:M, y, size:10, font:helv, color:muted});
+  y -= 30;
+
+  drawSection('Datos del expediente');
+  const tit = getTitular(e);
+  drawKV('Titular', `${tit.razon_social||'—'} (${tit.persona_tipo||'—'})`);
+  drawKV('CUIT', tit.cuit||'—');
+  if(tit.dni_titular) drawKV('DNI titular', tit.dni_titular);
+  drawKV('Domicilio fiscal', tit.direccion||'—');
+  drawKV('Contacto', [tit.email, tit.telefono].filter(Boolean).join(' · ')||'—');
+  if(!tit.es_mismo_cliente) drawKV('Representante / firma', `${cli.razon_social||'—'} · ${cli.cuit||'—'}`);
+  drawKV('Denominación', e.denominacion||'—');
+  drawKV('Dirección comercial', e.direccion_comercial||'—');
+  drawKV('Partida inmobiliaria', e.partida_inmobiliaria||'—');
+  if(e.superficie_m2) drawKV('Superficie', e.superficie_m2+' m²');
+  if(e.factor_ocupacion) drawKV('Factor ocupación', e.factor_ocupacion+' personas');
+  drawKV('Rubro', rub.nombre||'—');
+  if(e.categoria_10799) drawKV('Categoría Ord. 10799', 'Cat. '+e.categoria_10799);
+  drawKV('Tipo de trámite', TIPOS_TRAMITE[e.tipo_tramite]||'—');
+  drawKV('Estado', (ESTADOS[e.estado]||{}).label||'—');
+  drawKV('Fecha de inicio', fmtDate(e.fecha_inicio));
+  y -= 8;
+
+  drawSection('Condiciones declaradas');
+  drawKV('Instalación de gas', e.tiene_gas?'SÍ':'no');
+  drawKV('Agua caliente sanitaria', e.tiene_agua_caliente?'SÍ':'no');
+  drawKV('Mesas / sillas vía pública', e.tiene_mesas_via_publica?'SÍ':'no');
+  drawKV('Planos desactualizados', e.planos_desactualizados?'SÍ — Aplica Res. 137/2025':'no');
+  y -= 8;
+
+  const grupoTipo = {
+    completo:null, ddjj:null, anexo1:['generales','inmueble','personeria'],
+    anexo2:['antisiniestral'], anexo3:['ord_10799'], bomberos:['bomberos'],
+    reba:['reba'], reg137:['regularizacion'],
+    cierre:['generales','inmueble'],
+  };
+  const filtroGrupos = grupoTipo[tipo];
+  let itemsToShow = (e.items||[]);
+  if(filtroGrupos) itemsToShow = itemsToShow.filter(i=>filtroGrupos.includes(i.grupo));
+
+  if(itemsToShow.length){
+    drawSection(tipo==='completo' ? 'Checklist completo del expediente' : 'Requisitos cargados');
+    const grupos = [...new Set(itemsToShow.map(i=>i.grupo))];
+    for(const g of grupos){
+      checkRoom(40);
+      page.drawText((GRUPOS[g]||g).toUpperCase(), {x:M, y, size:9, font:helvBold, color:navy});
+      y -= 14;
+      const its = itemsToShow.filter(i=>i.grupo===g);
+      for(const it of its) drawCheck(it);
+      y -= 6;
+    }
+  }
+
+  if(['completo','ddjj','anexo1','cierre'].includes(tipo)){
+    if(y < 130) y = newPage();
+    y = Math.max(y, 120);
+    y -= 20;
+    page.drawLine({start:{x:M,y}, end:{x:W-M,y}, thickness:.5, color:rule});
+    y -= 14;
+    page.drawText('Firma del titular', {x:M, y, size:8, font:helv, color:muted});
+    page.drawText('Aclaración', {x:W/2+20, y, size:8, font:helv, color:muted});
+    y -= 50;
+    page.drawLine({start:{x:M,y}, end:{x:M+180,y}, thickness:.5, color:ink});
+    page.drawLine({start:{x:W/2+20,y}, end:{x:W-M,y}, thickness:.5, color:ink});
+  }
+
+  page.drawText(`Habilitaciones La Plata · By Gestor La Plata · ${new Date().toLocaleString('es-AR')}`,
+    {x:M, y:30, size:7, font:helvItal, color:muted});
+
+  const bytes = await pdf.save();
+  const blob = new Blob([bytes], {type:'application/pdf'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${tipo}-${(e.denominacion||'expediente').replace(/[^a-zA-Z0-9]+/g,'-')}.pdf`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+  toast('PDF generado','ok');
+}
+window.generarPdf = generarPdf;
+
+function renderClientes(id){
+  if(id==='nuevo' || id){
+    let c;
+    if(id==='nuevo'){
+      if(!window._cliNuevo) window._cliNuevo = {persona_tipo:'FISICA', tipo_contacto:'representante'};
+      c = window._cliNuevo;
+    } else {
+      c = STORE.clientes.find(x=>x.id===id);
+    }
+    if(!c) return '<div class="empty">Cliente no encontrado</div>';
+    if(!c.tipo_contacto) c.tipo_contacto = c.cuit ? 'titular' : 'representante';
+    const isNew = id==='nuevo';
+    const esTitular = c.tipo_contacto === 'titular';
+
+    return `
+    <div class="page-head">
+      <div>
+        <h1>${isNew?'Nuevo contacto':'Editar contacto'}</h1>
+        <div class="sub">${esTitular ? '🏪 Cargando datos completos del TITULAR del comercio' : '👤 Cargando datos básicos de un REPRESENTANTE / contacto'}</div>
+      </div>
+      <div class="actions"><button class="btn btn-ghost" onclick="navTo('clientes')">← Volver</button></div>
+    </div>
+
+    <div class="card mb-md" style="max-width:680px;margin:0 auto 14px">
+      <h3 style="margin-bottom:6px">¿Quién es esta persona?</h3>
+      <p class="muted small mb-md">Si todavía no sabés si va a ser titular o no, dejalo como representante. Después lo podés cambiar.</p>
+      <label class="form-check ${!esTitular?'checked':''}">
+        <input type="radio" name="cli_rol" value="representante" ${!esTitular?'checked':''} onchange="setClienteRol('${id}','representante')">
+        <div>
+          <div class="label-text">👤 Representante / Contacto</div>
+          <div class="label-help">Persona que te contactó pero <b>todavía no sabés si será el titular</b>, o es un familiar, gerente, contador, etc. Solo te pido nombre, teléfono y email — sin CUIT ni DNI.</div>
+        </div>
+      </label>
+      <label class="form-check ${esTitular?'checked':''}">
+        <input type="radio" name="cli_rol" value="titular" ${esTitular?'checked':''} onchange="setClienteRol('${id}','titular')">
+        <div>
+          <div class="label-text">🏪 Titular del comercio</div>
+          <div class="label-help">Dueño legal de la habilitación. Datos completos: CUIT, DNI, domicilio fiscal — porque van a figurar en la habilitación municipal.</div>
+        </div>
+      </label>
+    </div>
+
+    <div class="card" style="max-width:680px;margin:0 auto">
+      <h3 style="font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde);margin-bottom:14px;font-family:'Poppins'">${esTitular?'🏪 Datos del titular':'👤 Datos del representante'}</h3>
+
+      ${esTitular ? `
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Tipo de persona</label>
+            <select class="form-select" id="cli_persona_tipo">
+              <option value="FISICA"   ${c.persona_tipo==='FISICA'?'selected':''}>Persona física</option>
+              <option value="JURIDICA" ${c.persona_tipo==='JURIDICA'?'selected':''}>Persona jurídica</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">CUIT / CUIL <span style="color:#b91c1c">*</span></label>
+            <input class="form-input" id="cli_cuit" placeholder="20-12345678-9" value="${escapeHtml(c.cuit||'')}">
+          </div>
+        </div>
+      ` : ''}
+
+      <div class="form-group">
+        <label class="form-label">${esTitular?'Razón social / Nombre completo':'Nombre y apellido'} <span style="color:#b91c1c">*</span></label>
+        <input class="form-input" id="cli_razon_social" placeholder="${esTitular?'Ej. Pandaluzza SRL · o María González':'Ej. Juan Pérez (contacto)'}" value="${escapeHtml(c.razon_social||'')}">
+      </div>
+
+      <div class="form-row">
+        ${esTitular ? `<div class="form-group"><label class="form-label">DNI</label><input class="form-input" id="cli_dni_titular" value="${escapeHtml(c.dni_titular||'')}"></div>` : '<div></div>'}
+        <div class="form-group"><label class="form-label">Teléfono</label><input class="form-input" id="cli_telefono" value="${escapeHtml(c.telefono||'')}"></div>
+      </div>
+
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="cli_email" value="${escapeHtml(c.email||'')}"></div>
+
+      ${esTitular ? `
+        <div class="form-group"><label class="form-label">Domicilio fiscal</label><input class="form-input" id="cli_direccion" value="${escapeHtml(c.direccion||'')}"></div>
+      ` : `
+        <div class="form-group">
+          <label class="form-label">Vínculo con el (futuro) titular</label>
+          <select class="form-select" id="cli_vinculo">
+            <option value="">— Todavía no sé —</option>
+            <option value="probable_titular" ${c.vinculo==='probable_titular'?'selected':''}>Probable titular (pendiente de confirmar)</option>
+            <option value="apoderado"        ${c.vinculo==='apoderado'?'selected':''}>Apoderado / Representante legal</option>
+            <option value="familiar"         ${c.vinculo==='familiar'?'selected':''}>Familiar del titular</option>
+            <option value="gerente"          ${c.vinculo==='gerente'?'selected':''}>Gerente / Empleado</option>
+            <option value="contador"         ${c.vinculo==='contador'?'selected':''}>Contador</option>
+            <option value="otro"             ${c.vinculo==='otro'?'selected':''}>Otro</option>
+          </select>
+          <div class="form-help">Cuando lo tengas claro, podés convertirlo en titular o cargar el titular como contacto separado.</div>
+        </div>
+      `}
+
+      <div class="form-group"><label class="form-label">Notas internas</label><textarea class="form-textarea" id="cli_notas" placeholder="Ej: contactó por WhatsApp el 24/4, le interesa habilitar un café, dijo que el local está a nombre de la madre...">${escapeHtml(c.notas||'')}</textarea></div>
+
+      ${!esTitular ? `
+      <div class="card mb-md mt-md" style="background:#fef3c7;border:1px solid #fde68a;box-shadow:none">
+        <div class="row gap-sm" style="align-items:flex-start">
+          <div style="font-size:18px">💡</div>
+          <div class="small">
+            <b>Recordá:</b> cuando este contacto te confirme quién será el titular del comercio, vas a cargar los datos del titular dentro del expediente (en la pestaña <b>Actividad comercial → 🧑‍💼 Titular del comercio</b>). Esos datos son los que figuran en la habilitación municipal.
+          </div>
+        </div>
+      </div>
+      ` : ''}
+
+      <div class="row" style="justify-content:flex-end;gap:10px">
+        ${!isNew?`<button class="btn btn-danger" onclick="borrarCliente('${id}')">🗑️ Borrar</button>`:''}
+        <button class="btn btn-primary" onclick="guardarCliente('${isNew?'':id}')">💾 Guardar</button>
+      </div>
+    </div>
+    `;
+  }
+  const titulares = STORE.clientes.filter(c=>c.tipo_contacto==='titular').length;
+  const reps = STORE.clientes.filter(c=>c.tipo_contacto!=='titular').length;
+  return `
+  <div class="page-head">
+    <div><h1>Contactos</h1><div class="sub">${STORE.clientes.length} ${STORE.clientes.length===1?'contacto':'contactos'} · ${titulares} titular${titulares===1?'':'es'} · ${reps} representante${reps===1?'':'s'}</div></div>
+    <div class="actions"><button class="btn btn-primary" onclick="navTo('clientes/nuevo')">+ Nuevo contacto</button></div>
+  </div>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>Nombre</th><th>Rol</th><th>CUIT</th><th>Contacto</th><th></th></tr></thead>
+    <tbody>${STORE.clientes.map(c=>{
+      const exps = STORE.expedientes.filter(e=>e.cliente_id===c.id).length;
+      const esTit = c.tipo_contacto==='titular';
+      const rolBadge = esTit
+        ? `<span class="badge badge-verde">🏪 Titular</span>`
+        : `<span class="badge badge-info">👤 Representante</span>`;
+      const persBadge = esTit ? `<span class="badge ${c.persona_tipo==='JURIDICA'?'badge-amber':'badge-gris'}" style="margin-left:4px">${c.persona_tipo||''}</span>` : '';
+      return `<tr>
+        <td><span class="cell-strong">${escapeHtml(c.razon_social)}</span><br><span class="cell-muted">${exps} expediente${exps===1?'':'s'}${c.vinculo&&!esTit?' · '+escapeHtml(({probable_titular:'probable titular',apoderado:'apoderado',familiar:'familiar',gerente:'gerente',contador:'contador',otro:'otro'})[c.vinculo]||c.vinculo):''}</span></td>
+        <td>${rolBadge}${persBadge}</td>
+        <td class="cell-muted font-mono">${escapeHtml(c.cuit||'—')}</td>
+        <td class="cell-muted">${escapeHtml(c.email||c.telefono||'—')}</td>
+        <td><div class="row-actions"><button class="btn-icon" onclick="navTo('clientes/${c.id}')">✏️</button></div></td>
+      </tr>`;
+    }).join('')}</tbody>
+  </table></div>`;
+}
+
+function setClienteRol(id, rol){
+  // capturar valores actuales antes de re-render
+  const tmp = {};
+  ['persona_tipo','razon_social','cuit','dni_titular','telefono','email','direccion','vinculo','notas'].forEach(k=>{
+    const el = document.getElementById('cli_'+k);
+    if(el) tmp[k] = el.value;
+  });
+  if(id==='nuevo' || !id || id===''){
+    if(!window._cliNuevo) window._cliNuevo = {};
+    Object.assign(window._cliNuevo, tmp, {tipo_contacto:rol});
+  } else {
+    const c = STORE.clientes.find(x=>x.id===id);
+    if(c){ Object.assign(c, tmp, {tipo_contacto:rol}); guardarStore(STORE); }
+  }
+  render();
+}
+window.setClienteRol = setClienteRol;
+
+function guardarCliente(id){
+  const fields = ['persona_tipo','razon_social','cuit','dni_titular','telefono','email','direccion','vinculo','notas'];
+  const data = fields.reduce((acc,k)=>{ const el=document.getElementById('cli_'+k); if(el) acc[k]=el.value.trim(); return acc; },{});
+  // determinar rol
+  const rolEl = document.querySelector('input[name=cli_rol]:checked');
+  data.tipo_contacto = rolEl ? rolEl.value : (id ? (STORE.clientes.find(c=>c.id===id)?.tipo_contacto) : 'representante') || 'representante';
+  // validaciones por rol
+  if(!data.razon_social){ toast('El nombre es obligatorio','error'); return; }
+  if(data.tipo_contacto==='titular' && !data.cuit){ toast('Para titular el CUIT es obligatorio','error'); return; }
+  if(id){
+    Object.assign(STORE.clientes.find(c=>c.id===id), data);
+    toast('Contacto actualizado','ok');
+  }else{
+    STORE.clientes.push({id:uid(), ...data});
+    toast(data.tipo_contacto==='titular'?'Titular creado':'Representante creado','ok');
+  }
+  window._cliNuevo = null;
+  guardarStore(STORE);
+  navTo('clientes');
+}
+window.guardarCliente = guardarCliente;
+
+function borrarCliente(id){
+  const tieneExp = STORE.expedientes.some(e=>e.cliente_id===id);
+  if(tieneExp){ toast('No se puede borrar: tiene expedientes asociados','error'); return; }
+  if(!confirm('¿Borrar este cliente?')) return;
+  STORE.clientes = STORE.clientes.filter(c=>c.id!==id);
+  guardarStore(STORE);
+  toast('Cliente borrado','error');
+  navTo('clientes');
+}
+window.borrarCliente = borrarCliente;
+
+function renderVencimientos(){
+  const venc = vencProximos();
+  return `
+  <div class="page-head"><div><h1>Vencimientos</h1><div class="sub">Próximos 30 días</div></div></div>
+  ${venc.length===0 ? '<div class="empty"><div class="icon">✅</div><h3>Todo al día</h3><p>No hay vencimientos en los próximos 30 días.</p></div>' : `
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Días</th><th>Requisito</th><th>Expediente</th><th>Fecha</th><th></th></tr></thead>
+      <tbody>${venc.map(v=>{
+        const cls = v.dias<0?'badge-red':v.dias<=7?'badge-red':v.dias<=15?'badge-amber':'badge-info';
+        const lbl = v.dias<0?`Vencido hace ${Math.abs(v.dias)}d`:v.dias===0?'Hoy':`En ${v.dias}d`;
+        return `<tr>
+          <td><span class="badge ${cls}">${lbl}</span></td>
+          <td>${escapeHtml(v.item.label)}</td>
+          <td><a onclick="navTo('expedientes/${v.exp.id}/checklist')" style="cursor:pointer">${escapeHtml(v.exp.denominacion||'—')}</a></td>
+          <td class="cell-muted">${fmtDate(v.item.vencimiento)}</td>
+          <td><button class="btn btn-ghost btn-sm" onclick="navTo('expedientes/${v.exp.id}/checklist')">Ver →</button></td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table></div>
+  `}`;
+}
+
+let rubrosAbiertos = new Set();
+
+function renderCatalogo(){
+  return `
+  <div class="page-head"><div><h1>Catálogo de rubros</h1><div class="sub">${RUBROS.length} rubros · click en cada uno para ver todos los requisitos</div></div></div>
+
+  <div class="col" style="gap:0">
+    ${RUBROS.map(r=>{
+      const open = rubrosAbiertos.has(r.id);
+      const sup = r.cat_sugerida ? 350 : 100; // simulamos > 300m² para los con permanencia
+      const ctxBase = {
+        tiene_gas: !!r.sugiere_gas, tiene_agua_caliente:false, tiene_mesas_via_publica:false,
+        es_modificacion:false, es_transferencia:false,
+        es_reba:false, es_reba_inscripcion:false, es_reba_renovacion:false,
+        permanencia_publico: !!r.cat_sugerida,
+        categoria_10799: r.cat_sugerida || null,
+        persona_juridica:false, planos_desactualizados:false,
+        manifestaciones_artisticas: !!r.man_artisticas,
+        superficie_grande: sup > 300 || !!r.man_artisticas,
+        es_gnc:r.id==='estacion_serv', es_liquidos:r.id==='estacion_serv',
+      };
+      const fakeExp = {rubro_id:r.id, items:[]};
+      // simular contexto
+      Object.assign(fakeExp, {
+        cliente_id:null, tipo_tramite:'HABILITACION_NUEVA',
+        categoria_10799: ctxBase.categoria_10799,
+        tiene_gas:ctxBase.tiene_gas, manifestaciones_artisticas:ctxBase.manifestaciones_artisticas,
+        es_gnc:ctxBase.es_gnc, es_liquidos:ctxBase.es_liquidos, superficie_m2:sup,
+      });
+      const baseReqs = TODOS_REQ.filter(req => aplica(req.solo_si, ctxBase));
+      const actReqs = reqActEspeciales(r.id, ctxBase);
+      const reqs = [...baseReqs, ...actReqs];
+      const grupos = [...new Set(reqs.map(rq=>rq.grupo))];
+      const tags = [];
+      if(r.cat_sugerida) tags.push(`<span class="code-pill" style="margin-left:3px">10799 cat. ${r.cat_sugerida}</span>`);
+      if(r.cat_sugerida) tags.push(`<span class="code-pill" style="margin-left:3px;background:#fee2e2;color:#991b1b">+ Bomberos</span>`);
+      if(r.sugiere_gas) tags.push(`<span class="code-pill" style="margin-left:3px">gas</span>`);
+      if(r.man_artisticas) tags.push(`<span class="code-pill" style="margin-left:3px">man.artísticas</span>`);
+      if(r.actividades && r.actividades.length) tags.push(`<span class="code-pill" style="margin-left:3px">act.especial</span>`);
+      return `
+      <div onclick="toggleRubroCat('${r.id}')" class="rubro-card ${open?'open':''}" style="margin-bottom:${open?'0':'8px'};border-radius:${open?'12px 12px 0 0':'12px'}">
+        <div class="rubro-info">
+          <div class="rubro-nombre">${escapeHtml(r.nombre)}</div>
+          <div class="rubro-meta">${reqs.length} requisitos · ${reqs.filter(rq=>rq.obligatorio).length} obligatorios ${tags.length?' · '+tags.join(''):''}</div>
+        </div>
+        <div class="arrow">▶</div>
+      </div>
+      <div class="rubro-detail ${open?'show':''}">
+        ${grupos.map(g=>`
+          <div class="grupo-block">
+            <h4>${GRUPOS[g]||g}</h4>
+            <ul>${reqs.filter(rq=>rq.grupo===g).map(rq=>`<li class="${!rq.obligatorio?'opt':''}">${escapeHtml(rq.label)}${!rq.obligatorio?' <span class="muted small">(opcional)</span>':''}${rq.help?` <span class="muted small">— ${escapeHtml(rq.help)}</span>`:''}</li>`).join('')}</ul>
+          </div>
+        `).join('')}
+      </div>`;
+    }).join('')}
+  </div>
+  `;
+}
+
+function toggleRubroCat(id){
+  if(rubrosAbiertos.has(id)) rubrosAbiertos.delete(id);
+  else rubrosAbiertos.add(id);
+  render();
+}
+window.toggleRubroCat = toggleRubroCat;
+
+function renderOrdenanzas(){
+  return `
+  <div class="page-head"><div><h1>Ordenanzas</h1><div class="sub">Marco normativo aplicable</div></div></div>
+  <div class="card-grid">
+    ${ORDENANZAS.map(o=>`
+      <div class="card featured">
+        <div class="row" style="justify-content:space-between;margin-bottom:8px"><h3 style="font-size:18px">N° ${o.nro}</h3><span class="badge badge-verde">Vigente</span></div>
+        <h4 style="font-size:14px;color:var(--navy);margin-bottom:8px">${escapeHtml(o.titulo)}</h4>
+        <p class="small muted">${escapeHtml(o.descripcion)}</p>
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+function renderBackup(){
+  const exps = STORE.expedientes.length;
+  const cli = STORE.clientes.length;
+  const arch = STORE.expedientes.filter(e=>e.estado==='ARCHIVADO').length;
+  return `
+  <div class="page-head"><div><h1>Backup / Restore</h1><div class="sub">Exportar e importar tus datos</div></div></div>
+
+  <div class="card-grid">
+    <div class="card metric"><div class="label">Clientes</div><div class="value">${cli}</div></div>
+    <div class="card metric"><div class="label">Expedientes activos</div><div class="value">${exps-arch}</div></div>
+    <div class="card metric"><div class="label">Archivados</div><div class="value">${arch}</div></div>
+  </div>
+
+  <div class="card mt-lg" style="border-left:4px solid var(--verde)">
+    <h3 style="margin-bottom:6px">📤 Exportar todos tus datos</h3>
+    <p class="muted small mb-md">Descarga un archivo JSON con clientes, expedientes, items, fojas y todo el historial. Guardalo en Drive, Dropbox o pendrive.</p>
+    <button class="btn btn-primary" onclick="exportar()">💾 Descargar backup JSON</button>
+  </div>
+
+  <div class="card mt-lg" style="border-left:4px solid #f59e0b">
+    <h3 style="margin-bottom:6px">📥 Importar backup</h3>
+    <p class="muted small mb-md"><b>Atención:</b> esto va a <b>reemplazar</b> todos los datos actuales con los del archivo importado.</p>
+    <input type="file" accept="application/json" id="importFile" onchange="importar(event)" class="form-input">
+  </div>
+
+  <div class="card mt-lg" style="border-left:4px solid #b91c1c">
+    <h3 style="margin-bottom:6px;color:#b91c1c">⚠️ Borrar todos los datos</h3>
+    <p class="muted small mb-md">Borra clientes, expedientes y todo el historial. Esta acción es irreversible.</p>
+    <button class="btn btn-danger" onclick="borrarTodo()">🗑️ Empezar de cero</button>
+  </div>
+
+  <div class="card mt-lg" style="background:var(--mint);border:1px solid rgba(26,122,74,.2)">
+    <h3 style="margin-bottom:8px;color:var(--verde)">💡 Cómo trabajar entre dispositivos</h3>
+    <p class="small mb-md">Esta app guarda los datos en el navegador (localStorage), así que cada dispositivo tiene su propia copia. Para sincronizar:</p>
+    <ol class="small" style="padding-left:24px;line-height:1.8">
+      <li><b>Antes de cerrar:</b> en este dispositivo, descargá el backup JSON.</li>
+      <li><b>Subilo a Google Drive / Dropbox / pendrive.</b></li>
+      <li><b>En el otro dispositivo:</b> abrí el archivo HTML, vení a esta sección, importá el JSON.</li>
+    </ol>
+    <p class="small mt-md muted">Una alternativa más cómoda: guardá el HTML <b>y el JSON juntos en Google Drive</b>, y abrí siempre el HTML desde Drive. Cada vez que cierres, exportás y reemplazás el JSON. Si querés sincronización automática real, ese es el momento de pasarte a la versión con backend (Next.js + Supabase).</p>
+  </div>
+  `;
+}
+
+function exportar(){
+  const blob = new Blob([JSON.stringify(STORE,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `habilitaciones-laplata-backup-${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  toast('Backup descargado','ok');
+}
+window.exportar = exportar;
+
+function importar(ev){
+  const f = ev.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = e => {
+    try{
+      const s = JSON.parse(e.target.result);
+      if(!s.clientes || !s.expedientes) throw new Error('Formato inválido');
+      if(!confirm(`Importar ${s.clientes.length} clientes y ${s.expedientes.length} expedientes? Esto reemplaza los datos actuales.`)) return;
+      STORE = s; guardarStore(STORE); toast('Datos importados','ok'); render();
+    }catch(err){ toast('Error: '+err.message,'error'); }
+  };
+  r.readAsText(f);
+}
+window.importar = importar;
+
+function borrarTodo(){
+  if(!confirm('¿BORRAR TODO? No se puede deshacer.')) return;
+  if(!confirm('Última confirmación: ¿estás seguro?')) return;
+  localStorage.removeItem(STORE_KEY);
+  STORE = cargarStore();
+  toast('Datos eliminados','error');
+  navTo('');
+}
+window.borrarTodo = borrarTodo;
+
+function renderPortal(token){
+  const e = STORE.expedientes.find(x=>x.portal_token===token);
+  if(!e) return `<div class="portal-wrap"><div class="card"><h1 style="font-size:24px;color:#b91c1c">Link no válido</h1><p class="muted">Este link no existe o fue revocado. Pedile al gestor que te genere uno nuevo.</p></div></div>`;
+  const cli = STORE.clientes.find(c=>c.id===e.cliente_id);
+  const items = e.items||[];
+  const grupos = [...new Set(items.map(i=>i.grupo))];
+  const pct = progresoPct(e);
+
+  return `
+  <div class="portal-wrap">
+    <div class="portal-hero">
+      <div class="sub">Habilitaciones La Plata · Portal</div>
+      <h1>${escapeHtml(e.denominacion||'Tu expediente')}</h1>
+      <div class="desc">Hola ${escapeHtml(cli?.razon_social||'')}, este es el listado de documentación que necesitamos para tu habilitación. Marcá cada ítem a medida que lo vayas teniendo y nosotros nos encargamos del resto.</div>
+    </div>
+
+    <div class="card mb-md">
+      <div class="progress-row"><span><b>Progreso</b></span><span class="pct">${pct}%</span></div>
+      <div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div>
+    </div>
+
+    ${grupos.map(g=>{
+      const gItems = items.filter(i=>i.grupo===g && i.obligatorio);
+      if(!gItems.length) return '';
+      return `
+      <div class="checklist-group">
+        <h3>${GRUPOS[g]||g}</h3>
+        ${gItems.map(it=>`
+          <div class="check-item ${it.checked?'done':''}">
+            <div class="head">
+              <input type="checkbox" ${it.checked?'checked':''} onchange="portalToggle('${e.id}','${it.codigo}',this.checked)">
+              <div class="body">
+                <div class="label">${escapeHtml(it.label)}</div>
+                ${it.help?`<div class="help">${escapeHtml(it.help)}</div>`:''}
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      `;
+    }).join('')}
+
+    <div class="card mt-lg" style="background:var(--mint);text-align:center">
+      <p class="small">Cualquier duda escribinos por WhatsApp. Cuando termines de subir todo, lo revisamos y te confirmamos.</p>
+    </div>
+  </div>`;
+}
+
+function portalToggle(expId, codigo, val){
+  const e = STORE.expedientes.find(x=>x.id===expId); if(!e) return;
+  const it = e.items.find(i=>i.codigo===codigo); if(!it) return;
+  it.checked = val; guardarStore(STORE); toast(val?'✓ Marcado':'Desmarcado','ok');
+}
+window.portalToggle = portalToggle;
+
+if(!location.hash) location.hash = '#/';
+render();
+</script>
+</body>
+</html>
